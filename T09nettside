@@ -1,8 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <!-- Her definerer vi rammeverk og stiler brukt til spill, samt referer til CSS fil !-->
     <meta charset="utf-8">
-    <!-- Latest compiled and minified CSS -->
+  <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <!-- jQuery library -->
@@ -13,13 +15,59 @@
 
   <link rel="stylesheet" type="text/css" href="T-09design.css">
 
-    <title></title>
+    <title>Ordspillet</title>
+
+<!-- Filer som brukes:
+ !-->
+<!-- !-->
+<!-- !-->
+<!-- !-->
+
   </head>
   <body>
+<!-- Her har vi laget en menybar !-->
 
-<h1 id="overskrift"> TEAM 09 </h1>
+
+    <div class="container" id="header">
+
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Team 09</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Spill</a></li>
+            <li> <a href="#">Regler Spill</a></li>
+            <li> <a href="#">Om oss</a></li>
+          </ul>
+        </div>
+      </nav>
+
+    </div>
+
+<h1 class="center-text" id="overskrift-topp"> TEAM 09 </h1>
+
 
 <!-- Vi setter inn script her. Det blir etter navbar o.l !-->
+<div class="container">
+<canvas class="spill" width="400" height="550"></canvas>
+</div>
 
+<!-- Div til andre punkter på siden. evt lede til andre nettsider -->
+<div class="container1" id="nav navbar-nav">
+
+</div>
+
+<div class="container2" id="reglerspill">
+
+</div>
+
+<div class="container3" id="omoss">
+
+</div>
+
+<footer id="Hovedfooter">
+  <p> Copyright &copy; TEAM 09 2018 </p>
+</footer>
   </body>
 </html>
