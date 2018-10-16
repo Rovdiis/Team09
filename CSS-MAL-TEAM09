@@ -1,0 +1,13 @@
+body {
+    background-color:#E4E4E4;
+    color:#555;
+    font-family:Arial,sans-serif,helvetica,times;
+    font-size:16px;
+    line-height:1.5em;
+    margin:0;
+}
+
+#overskrift {
+  text-align: center;
+  font-size: 50px;
+}
