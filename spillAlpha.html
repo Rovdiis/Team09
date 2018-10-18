@@ -10,80 +10,55 @@
 
 </head>
 
-<body onload="nyttOrd()" onkeydown="spill(event)">
+<body onload="nyttOrd()" onkeydown="play(event)">
     <h1>Dette er en nettside</h1>
-    <div id="ordet"></div>
+    <div id="word"></div>
     <div id="poeng"></div>
    <!--Skriv her <input type="text" id="skriv" oninput="riktig()">-->
 
   <script>
 
 
-      //Liste med ord
-        var liste = ["kult","hade","moro", "cola", "artig"];
 
-      //Velger ut et tilfeldig ord som brukeren må skrive
-
-
-
+      var list = ["HI","BYE","FUN", "COOL", "GOOD"];
       var randomItem;
       var keyPressed;
       var keyPressedChar;
-      var bokstaver;
-      var i;
+      var letters;
+      var i = 0;
 
-      function spill(event){
+      function play(event){
         var keyPressed = event.keyCode;
         var keyPressedChar = String.fromCharCode(keyPressed);
-        console.log("Keyboard press funker: " + keyPressed);
+        console.log("Keyboard press works: " + keyPressedChar);
         splitWord();
         checkValue();
 
       }
 
       function splitWord(){
-        var bokstaver = randomItem.split('');
-        console.log(bokstaver);
+        letters = randomItem.split('');
+        console.log(letters);
       }
-      //Lager et nytt ord når brukeren har fått til forrige ord
-      function nyttOrd(){
-        //Velger ut et tilfeldig ord fra arrayen.
-          randomItem = liste[Math.floor(Math.random()*liste.length)];
-          document.getElementById("ordet").innerText = "Ordet er "+ randomItem;
-        //  document.getElementById("skriv").value = "";
-          //Gjør om ordet til array med bokstaver som sin egen verdi
-          splitWord();
 
-          //console.log(randomItem[i]);
-          //randomItem[i]=[];
-          //console.log(randomItem.length);
+      function nyttOrd(){
+          randomItem = list[Math.floor(Math.random()*list.length)];
+          document.getElementById("word").innerText = "The word is: "+ randomItem;
+
+          splitWord();
 
       }
       function checkValue(){
-        //En løkke som matcher lengden til ordet
-        //if(keyPressed == true){
-        for(i=0; i<randomItem.length; i++){
-            //Sjekker om det du trykker på tastaturet matcher med verdien til bokstaven i arrayet
-              if(bokstaver[i].innerHTML === keyPressed){
+        //for(i=0; i<letters.length; i++){
+              if(keyPressedChar = letters[i]){
                 console.log("Okey");
+                i+1;
               }else{
                 console.log("Not Okey");
+                console.log(letters[i]);
               }
-            //}
         }
-      }
-
-      //Sjekker om brukeren har fått til ordet automatisk.
-        //function riktig(){
-          //  document.getElementById("skriv").value
-          //  if(skriv.value == randomItem){
-          //      console.log("Riktig");
-          //      nyttOrd();
-          //      console.log(skriv.value);
-
-          //  }
-
-        //}
+    //  }
 </script>
 
 </body>
