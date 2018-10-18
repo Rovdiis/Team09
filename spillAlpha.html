@@ -26,11 +26,13 @@
       var keyPressedChar;
       var letters;
       var i = 0;
+      var currentChar = null
+      var spillFerdig = false;
 
       function play(event){
         var keyPressed = event.keyCode;
-        var keyPressedChar = String.fromCharCode(keyPressed);
-        console.log("Keyboard press works: " + keyPressedChar);
+        keyPressedChar = String.fromCharCode(keyPressed);
+        //console.log("Keyboard press works: " + keyPressedChar);
         splitWord();
         checkValue();
 
@@ -38,27 +40,34 @@
 
       function splitWord(){
         letters = randomItem.split('');
-        console.log(letters);
+        //console.log(letters);
       }
 
       function nyttOrd(){
           randomItem = list[Math.floor(Math.random()*list.length)];
           document.getElementById("word").innerText = "The word is: "+ randomItem;
-
           splitWord();
-
+          currentChar = letters[i]
       }
       function checkValue(){
-        //for(i=0; i<letters.length; i++){
-              if(keyPressedChar = letters[i]){
-                console.log("Okey");
-                i+1;
-              }else{
-                console.log("Not Okey");
-                console.log(letters[i]);
-              }
+        if (spillFerdig) {
+          console.log("Ferdig :D");
+          return;
         }
-    //  }
+        console.log("sammenligner: " + currentChar + " og " + keyPressedChar);
+        if(keyPressedChar === currentChar){
+          console.log("Du fant riktig bokstav!");
+          i++; //Inkrementer teller for å hente neste bokstav
+          if (i < letters.length) { // Er vi på siste siste bokstav?
+            currentChar = letters[i] //nopp, hent neste
+          } else {
+            spillFerdig = true; //jepp, sett til null 
+          }
+        } else {
+          console.log("Feil bokstav!!");
+          console.log("riktig er: " + letters[i]);
+        }
+    }
 </script>
 
 </body>
