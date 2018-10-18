@@ -1,5 +1,7 @@
 body {
-    background-color:grey;
+    background-image:url("faktiskbakgrunn1.png");
+    background-size: cover;
+    background-repeat:   no-repeat;
     color:#555;
     font-family:Arial,sans-serif,helvetica,times;
     font-size:16px;
