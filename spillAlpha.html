@@ -11,7 +11,7 @@
 </head>
 
 <body onload="nyttOrd()" onkeydown="play(event)">
-    <h1>Dette er en nettside</h1>
+    <h1>Typing Game Alpha</h1>
     <div id="word"></div>
     <div id="poeng"></div>
    <!--Skriv her <input type="text" id="skriv" oninput="riktig()">-->
@@ -26,7 +26,7 @@
       var keyPressedChar;
       var letters;
       var i = 0;
-      var currentChar = null
+      var currentChar = null;
       var spillFerdig = false;
 
       function play(event){
@@ -47,11 +47,13 @@
           randomItem = list[Math.floor(Math.random()*list.length)];
           document.getElementById("word").innerText = "The word is: "+ randomItem;
           splitWord();
-          currentChar = letters[i]
+          currentChar = letters[i];
       }
       function checkValue(){
         if (spillFerdig) {
           console.log("Ferdig :D");
+          list.pop(randomItem);
+          goAgain();
           return;
         }
         console.log("sammenligner: " + currentChar + " og " + keyPressedChar);
@@ -67,6 +69,12 @@
           console.log("Feil bokstav!!");
           console.log("riktig er: " + letters[i]);
         }
+    }
+    function goAgain(){
+        i = 0;
+        currentChar = null;
+        spillFerdig = false;
+        nyttOrd();
     }
 </script>
 
