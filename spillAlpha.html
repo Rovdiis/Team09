@@ -10,31 +10,33 @@
 
 </head>
 
-<body onload="nyttOrd()" onkeydown="play(event)">
+<body onload="newWord()" onkeydown="play(event)">
     <h1>Typing Game Alpha</h1>
     <div id="word"></div>
-    <div id="poeng"></div>
+    <div id="points"></div>
    <!--Skriv her <input type="text" id="skriv" oninput="riktig()">-->
 
   <script>
 
 
 
-      var list = ["DOCUMENT.GETELEMEBYID","FUNCTION","VAR", "LET", "CONSOLE.LOG"];
+      var list = ["MOTHERBOARD", "CASE", "POWER SUPPLY UNIT", "PROCESSOR", "CPU COOLER", "MEMORY", "RANDOM ACCESS MEMORY", "HARD DRIVE", "SOLID STATE DRIVE", "DIGITAL VERSATILE DISC", "GRAPHICS PROCESSING UNIT", "SOUND CARD", "COMPUTER MOUSE", "KEYBOARD", "UNIVERSAL SERIAL BUS", "SPEAKERS", "PRINTER", "MONITOR", "SYSTEM SOFTWARE", "APPLICATION SOFTWARE", "FRONT SIDE BUS", "MEMORY BUS", "SERIAL ATA BUS", "PCI EXPRESS BUS", "CPU CACHE", "HEADPHONES", "SCANNER", "JOYSTICK", "GAMEPAD"];
       var randomItem;
       var keyPressed;
       var keyPressedChar;
       var letters;
+      var points = 0;
       var i = 0;
       var currentChar = null;
-      var spillFerdig = false;
+      var rightWord = false;
 
 
       function play(event){
         var keyPressed = event.keyCode;
-        console.log(event.keyCode);
+        //console.log(event.keyCode);
         keyPressedChar = String.fromCharCode(keyPressed);
         //console.log("Keyboard press works: " + keyPressedChar);
+        document.getElementById("points").innerHTML = "Din poengsum er: " + points;
         splitWord();
         checkValue();
 
@@ -42,18 +44,20 @@
 
       function splitWord(){
         letters = randomItem.split('');
+
+        document.getElementById("word").innerText = "The word is: "+ letters.join("");
+
         //console.log(letters);
       }
 
-      function nyttOrd(){
+      function newWord(){
           randomItem = list[Math.floor(Math.random()*list.length)];
-          document.getElementById("word").innerText = "The word is: "+ randomItem;
           splitWord();
           currentChar = letters[i];
 
       }
       function checkValue(){
-        if (spillFerdig) {
+        if (rightWord) {
           console.log("Ferdig :D");
           goAgain();
           return;
@@ -63,11 +67,17 @@
           console.log("Du fant riktig bokstav!");
           i++; //Inkrementer teller for å hente neste bokstav
           if (i < letters.length) { // Er vi på siste siste bokstav?
-            currentChar = letters[i] //nopp, hent neste
+            currentChar = letters[i]; //nopp, hent neste
+            document.getElementById("word").innerHTML = "The word is: " + letters.splice(i).join("");
+
           } else {
-            spillFerdig = true; //jepp, sett til null
+            rightWord = true; //jepp, sett til null
+            document.getElementById("word").innerHTML = "The word is: " + letters.splice(i).join("");
+
+            points++;
           }
         } else {
+          document.getElementById("word").innerHTML = "The word is: " + letters.splice(i).join("");
           console.log("Feil bokstav!!");
           console.log("riktig er: " + letters[i]);
         }
@@ -75,8 +85,12 @@
     function goAgain(){
         i = 0;
         currentChar = null;
-        spillFerdig = false;
-        nyttOrd();
+        rightWord = false;
+        newWord();
+    }
+
+
+    function opacity(){
     }
 </script>
 
