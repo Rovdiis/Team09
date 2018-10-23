@@ -14,25 +14,23 @@
     <h1>Typing Game Alpha</h1>
     <div id="word"></div>
     <div id="points"></div>
-   <!--Skriv her <input type="text" id="skriv" oninput="riktig()">-->
-
   <script>
 
 
 
-      var list = ["MOTHERBOARD", "CASE", "POWER SUPPLY UNIT", "PROCESSOR", "CPU COOLER", "MEMORY", "RANDOM ACCESS MEMORY", "HARD DRIVE", "SOLID STATE DRIVE", "DIGITAL VERSATILE DISC", "GRAPHICS PROCESSING UNIT", "SOUND CARD", "COMPUTER MOUSE", "KEYBOARD", "UNIVERSAL SERIAL BUS", "SPEAKERS", "PRINTER", "MONITOR", "SYSTEM SOFTWARE", "APPLICATION SOFTWARE", "FRONT SIDE BUS", "MEMORY BUS", "SERIAL ATA BUS", "PCI EXPRESS BUS", "CPU CACHE", "HEADPHONES", "SCANNER", "JOYSTICK", "GAMEPAD"];
-      var randomItem;
-      var keyPressed;
-      var keyPressedChar;
-      var letters;
-      var points = 0;
-      var i = 0;
-      var currentChar = null;
-      var rightWord = false;
+      let list = ["MOTHERBOARD", "CASE", "POWER SUPPLY UNIT", "PROCESSOR", "CPU COOLER", "MEMORY", "RANDOM ACCESS MEMORY", "HARD DRIVE", "SOLID STATE DRIVE", "DIGITAL VERSATILE DISC", "GRAPHICS PROCESSING UNIT", "SOUND CARD", "COMPUTER MOUSE", "KEYBOARD", "UNIVERSAL SERIAL BUS", "SPEAKERS", "PRINTER", "MONITOR", "SYSTEM SOFTWARE", "APPLICATION SOFTWARE", "FRONT SIDE BUS", "MEMORY BUS", "SERIAL ATA BUS", "PCI EXPRESS BUS", "CPU CACHE", "HEADPHONES", "SCANNER", "JOYSTICK", "GAMEPAD"];
+      let randomItem;
+      let keyPressed;
+      let keyPressedChar;
+      let letters;
+      let points = 0;
+      let i = 0;
+      let currentChar = null;
+      let rightWord = false;
 
 
       function play(event){
-        var keyPressed = event.keyCode;
+        keyPressed = event.keyCode;
         //console.log(event.keyCode);
         keyPressedChar = String.fromCharCode(keyPressed);
         //console.log("Keyboard press works: " + keyPressedChar);
@@ -41,23 +39,23 @@
         checkValue();
 
       }
-
+      // Denne funksjonen splitter opp ordet til en egen array.
       function splitWord(){
         letters = randomItem.split('');
-
+        //Denne displayer order på skjermen
         document.getElementById("word").innerText = "The word is: "+ letters.join("");
 
-        //console.log(letters);
       }
-
+      //Denne funksjonen velger ut et nytt tilfeldig ord
       function newWord(){
           randomItem = list[Math.floor(Math.random()*list.length)];
           splitWord();
           currentChar = letters[i];
 
       }
+      //Denne funksjonen sjekker om det du taster på tastaturet er det samme som neste bokstav
       function checkValue(){
-        if (rightWord) {
+        if (rightWord) { //Hvis ordet er riktig
           console.log("Ferdig :D");
           goAgain();
           return;
@@ -73,15 +71,16 @@
           } else {
             rightWord = true; //jepp, sett til null
             document.getElementById("word").innerHTML = "The word is: " + letters.splice(i).join("");
-
+            //Legger til et poeng
             points++;
           }
-        } else {
+        } else { //Hvis bruker trykker feil bokstav
           document.getElementById("word").innerHTML = "The word is: " + letters.splice(i).join("");
           console.log("Feil bokstav!!");
           console.log("riktig er: " + letters[i]);
         }
     }
+    //Denne funksjonen kjører det som trengs for at et nytt ord skal kunne dukke opp når man er ferdig med forrige ord.
     function goAgain(){
         i = 0;
         currentChar = null;
@@ -89,9 +88,6 @@
         newWord();
     }
 
-
-    function opacity(){
-    }
 </script>
 
 </body>
