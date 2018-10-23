@@ -20,7 +20,7 @@
 
 
 
-      var list = ["HI","BYE","FUN", "COOL", "GOOD"];
+      var list = ["DOCUMENT.GETELEMEBYID","FUNCTION","VAR", "LET", "CONSOLE.LOG"];
       var randomItem;
       var keyPressed;
       var keyPressedChar;
@@ -29,8 +29,10 @@
       var currentChar = null;
       var spillFerdig = false;
 
+
       function play(event){
         var keyPressed = event.keyCode;
+        console.log(event.keyCode);
         keyPressedChar = String.fromCharCode(keyPressed);
         //console.log("Keyboard press works: " + keyPressedChar);
         splitWord();
@@ -48,11 +50,11 @@
           document.getElementById("word").innerText = "The word is: "+ randomItem;
           splitWord();
           currentChar = letters[i];
+
       }
       function checkValue(){
         if (spillFerdig) {
           console.log("Ferdig :D");
-          list.pop(randomItem);
           goAgain();
           return;
         }
