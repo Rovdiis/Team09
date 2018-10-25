@@ -14,6 +14,11 @@
     <h1>Typing Game Alpha</h1>
     <div id="word"></div>
     <div id="points"></div>
+    <div id="progress"></div>
+    <img src="/Users/jarloysteinrovde/Desktop/bilder_spill/wormstadie1.gif" style="position: absolute; left: 200px;" id="stadie1">
+    <img src="/Users/jarloysteinrovde/Desktop/bilder_spill/wormstadie2_7.gif"style="position: absolute; left: 200px; opacity: 0;" id="stadie2">
+    <img src="/Users/jarloysteinrovde/Desktop/bilder_spill/wormstadie3_3.gif"style="position: absolute; left: 200px; opacity: 0;" id="stadie3">
+
   <script>
 
 
@@ -27,6 +32,12 @@
       let i = 0;
       let currentChar = null;
       let rightWord = false;
+      let progress = document.getElementById("progress");
+      let numberOfLetters = 0;
+      let stadie1 = document.getElementById('stadie1');
+      let stadie2 = document.getElementById('stadie2');
+      let stadie3 = document.getElementById('stadie3');
+
 
 
       function play(event){
@@ -44,6 +55,9 @@
         letters = randomItem.split('');
         //Denne displayer order på skjermen
         document.getElementById("word").innerText = "The word is: "+ letters.join("");
+        numberOfLetters = letters.length;
+        //console.log(numberOfLetters);
+
 
       }
       //Denne funksjonen velger ut et nytt tilfeldig ord
@@ -56,17 +70,38 @@
       //Denne funksjonen sjekker om det du taster på tastaturet er det samme som neste bokstav
       function checkValue(){
         if (rightWord) { //Hvis ordet er riktig
-          console.log("Ferdig :D");
+        //  console.log("Ferdig :D");
           goAgain();
           return;
         }
-        console.log("sammenligner: " + currentChar + " og " + keyPressedChar);
+      //  console.log("sammenligner: " + currentChar + " og " + keyPressedChar);
         if(keyPressedChar === currentChar){
-          console.log("Du fant riktig bokstav!");
+        //  console.log("Du fant riktig bokstav!");
           i++; //Inkrementer teller for å hente neste bokstav
           if (i < letters.length) { // Er vi på siste siste bokstav?
             currentChar = letters[i]; //nopp, hent neste
             document.getElementById("word").innerHTML = "The word is: " + letters.splice(i).join("");
+
+            if(numberOfLetters*0.3 >= letters.length){
+              stadie1.style.opacity = "1";
+              stadie1.style.filter  = 'alpha(opacity=100)';
+              stadie3.style.opacity = "0";
+              stadie3.style.filter  = 'alpha(opacity=0)';
+
+            }
+            else if(numberOfLetters*0.3 <= letters.length && numberOfLetters*0.7 >= letters.length){
+              stadie1.style.opacity = "0";
+              stadie1.style.filter  = 'alpha(opacity=0)';
+              stadie2.style.opacity = "1";
+              stadie2.style.filter  = 'alpha(opacity=100)';
+            }
+            else{
+              stadie2.style.opacity = "0";
+              stadie2.style.filter  = 'alpha(opacity=0)';
+              stadie3.style.opacity = "1";
+              stadie3.style.filter  = 'alpha(opacity=100)';
+
+          }
 
           } else {
             rightWord = true; //jepp, sett til null
@@ -76,9 +111,13 @@
           }
         } else { //Hvis bruker trykker feil bokstav
           document.getElementById("word").innerHTML = "The word is: " + letters.splice(i).join("");
-          console.log("Feil bokstav!!");
-          console.log("riktig er: " + letters[i]);
+          //console.log("Feil bokstav!!");
+          //console.log("riktig er: " + letters[i]);
         }
+
+
+
+
     }
     //Denne funksjonen kjører det som trengs for at et nytt ord skal kunne dukke opp når man er ferdig med forrige ord.
     function goAgain(){
@@ -86,6 +125,9 @@
         currentChar = null;
         rightWord = false;
         newWord();
+        stadie3.style.opacity = "0";
+        stadie3.style.filter  = 'alpha(opacity=0)';
+
     }
 
 </script>
