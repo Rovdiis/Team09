@@ -44,8 +44,8 @@ let stadie2 = document.getElementById("stadie2");
 let stadie3 = document.getElementById("stadie3");
 let canvasWidth = 400;
 let canvasHeight = 550;
-let spriteWidth = 500;
-let spriteHeight = 250;
+let spriteWidth = 125;
+let spriteHeight = 62.5;
 let rows = 1;
 let cols = 2;
 let width = spriteWidth / cols;
@@ -63,8 +63,9 @@ canvas.height = canvasHeight;
 
 let ctx = canvas.getContext("2d");
 
-let character = new Image();
-character.onload = function() {
+
+let worm1 = new Image();
+worm1.onload = function() {
   function updateFrame() {
     curFrame = ++curFrame % frameCount;
     srcX = curFrame * width;
@@ -76,23 +77,25 @@ character.onload = function() {
 
   function draw() {
     updateFrame();
-    ctx.drawImage(character, srcX, srcY, width, height, x, y, width, height);
+    ctx.drawImage(worm1, srcX, srcY, width, height, x, y, width, height);
   }
 
   setInterval(draw, 500);
 };
-character.src = "/Users/jarloysteinrovde/Downloads/sprite-animation/spriteworm1.png";
+worm1.src = "/Users/jarloysteinrovde/Downloads/sprite-animation/spritetest2.png";
 
-// player();
-//
-// function player() {
-//   base_image = new Image();
-//   base_image.src =
-//     "https://github.com/Rovdiis/Team09/blob/master/Animasjoner%20og%20grafiske%20elementer/FULLSET3liv.png?raw=true";
-//   base_image.onload = function() {
-//     context.drawImage(base_image, 0, 250, 400, 300);
-//   };
-// }
+player();
+
+function player() {
+  base_image = new Image();
+  base_image.src = "/Users/jarloysteinrovde/Downloads/sprite-animation/FULLSET3liv.png";
+  base_image.onload = function() {
+    ctx.drawImage(base_image, 0, 150, 400, 400);
+  };
+
+}
+setInterval(player, 0.001);
+
 
 function play(event) {
   keyPressed = event.keyCode;
@@ -138,7 +141,7 @@ function checkValue() {
         "The word is: " + letters.splice(i).join("");
 
       if (numberOfLetters * 0.3 >= letters.length) {
-        worm1.style.opacity = "1";
+        worm1.style.opacity = "0";
         worm1.style.filter = "alpha(opacity=100)";
         stadie3.style.opacity = "0";
         stadie3.style.filter = "alpha(opacity=0)";
