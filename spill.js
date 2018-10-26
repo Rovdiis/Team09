@@ -53,7 +53,7 @@ let height = spriteHeight / rows;
 let curFrame = 0;
 let frameCount = 2;
 let x = 0;
-let y = -100;
+let y = -150;
 let srcX;
 let srcY;
 let speed = -12;
@@ -64,35 +64,35 @@ canvas.height = canvasHeight;
 let ctx = canvas.getContext("2d");
 
 let character = new Image();
-character.src =
-  "https://github.com/Rovdiis/Team09/blob/master/Animasjoner%20og%20grafiske%20elementer/spriteworm1.png?raw=true";
+character.onload = function() {
+  function updateFrame() {
+    curFrame = ++curFrame % frameCount;
+    srcX = curFrame * width;
+    ctx.clearRect(x, y, width, height);
 
-function updateFrame() {
-  curFrame = ++curFrame % frameCount;
-  srcX = curFrame * width;
-  ctx.clearRect(x, y, width, height);
+    srcY = 0 * height;
+    y -= speed;
+  }
 
-  srcY = 0 * height;
-  y -= speed;
-}
+  function draw() {
+    updateFrame();
+    ctx.drawImage(character, srcX, srcY, width, height, x, y, width, height);
+  }
 
-function draw() {
-  updateFrame();
-  ctx.drawImage(character, srcX, srcY, width, height, x, y, width, height);
-}
+  setInterval(draw, 500);
+};
+character.src = "/Users/jarloysteinrovde/Downloads/sprite-animation/spriteworm1.png";
 
-setInterval(draw, 500);
-
-player();
-
-function player() {
-  base_image = new Image();
-  base_image.src =
-    "https://github.com/Rovdiis/Team09/blob/master/Animasjoner%20og%20grafiske%20elementer/FULLSET3liv.png?raw=true";
-  base_image = function() {
-    context.drawImage(base_image, 0, 250, 400, 300);
-  };
-}
+// player();
+//
+// function player() {
+//   base_image = new Image();
+//   base_image.src =
+//     "https://github.com/Rovdiis/Team09/blob/master/Animasjoner%20og%20grafiske%20elementer/FULLSET3liv.png?raw=true";
+//   base_image.onload = function() {
+//     context.drawImage(base_image, 0, 250, 400, 300);
+//   };
+// }
 
 function play(event) {
   keyPressed = event.keyCode;
