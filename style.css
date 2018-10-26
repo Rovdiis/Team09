@@ -3,6 +3,7 @@ body {
 
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment:fixed;
     color:#555;
     font-family:Arial,sans-serif,helvetica,times;
     font-size:16px;
@@ -27,23 +28,32 @@ body {
 /*CSS for selve menylinjen*/
 
 #navmeny {
-  border:1px solid #ccc;
+  position:relative;
+    border:1px solid #ccc;
     border-width:1px 0;
+    text-align:center;
     list-style:none;
+    opacity:0.7;
+    background-color:rgb(0,25,36);
     margin:0;
     padding-top:20px;
-    padding-left: 19%;
-    padding-right: 19%;
+    padding-left: 38%;
+    padding-right: 33%;
     text-align:center;
   }
 
 
 
+.nav ul {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px ;
+}
+
 .nav li{
-  display: inline;
+  display: inline-block;
+  box-sizing:border-box;
   /*border: 1px solid grey;*/
-
-
 
 }
 /* Selve teksten */
@@ -53,6 +63,9 @@ body {
   font-size: 24px;
   padding-right:30px;
   padding-left: 30px;
+  padding-bottom:15px;
+  display:inline-block;
+
 
 }
 
