@@ -18,8 +18,7 @@
     <!-- Link til CSS dokument-->
     <link rel="stylesheet" type="text/css" href="style.css">
 
-    <!--Link til JavaScript dokument-->
-    <script src="spill.js"></script>
+
 
     <!-- Tittel på spillet-->
     <title>IT-støttet skyteutvikling</title>
@@ -32,25 +31,45 @@
 <!-- -->
 
   </head>
-  <body>
+  <body onload="newWord()" onkeydown="play(event)">
+    <div id="word"></div>
+    <div id="points"></div>
+    <div id="progress"></div>
+  <!--  <img src="/Users/jarloysteinrovde/Desktop/bilder_spill/wormstadie1.gif" style="position: absolute; left: 200px;" id="stadie1">
+    <img src="/Users/jarloysteinrovde/Desktop/bilder_spill/wormstadie2_7.gif"style="position: absolute; left: 200px; opacity: 0;" id="stadie2">
+    <img src="/Users/jarloysteinrovde/Desktop/bilder_spill/wormstadie3_3.gif"style="position: absolute; left: 200px; opacity: 0;" id="stadie3">
+-->
 
 
     <div id="bckg-img">
       <img id="bilde" src="https://www.freegameplanet.com/wp-content/uploads/2015/05/The-Blurred-Web.gif?fbclid=IwAR2On2Il6YbUDMtwGniDK4cvw1_iVgeosb1GFl2AIzv2ECvAx6EnuyVbJuQ">
     </div>
 
+<<<<<<< HEAD
     <div id="navmeny">
       <ul class="nav">
         <li> <a  href="index.html">Hjem</a> </li>
         <li> <a  href="#">Om oss</a> </li>
         <li> <a  href="#">Kode</a> </li>
+=======
+    <!-- Her har vi laget en menybar !-->
+
+    <div id="navmeny">
+      <ul class="nav">
+        <li> <a href="index.html">Hjem</a> </li>
+        <li> <a href="#">Om oss</a> </li>
+        <li> <a href="#">Kode</a> </li>
+>>>>>>> f847a21465485ae0aeac75814718af6e1763b8cc
       </ul>
     </div>
 
 <div class="container">
 
-<!-- Her har vi laget en menybar !-->
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f847a21465485ae0aeac75814718af6e1763b8cc
 
 <!-- A grey horizontal navbar that becomes vertical on small screens -->
 
@@ -64,7 +83,7 @@
 
 
 <!-- Dette er canvas som spillet skal ligge i !-->
-<canvas id="spill1" class="spill" width="400" height="550">
+<canvas id="spill1" class="spill">
 
 </canvas>
 
@@ -94,5 +113,7 @@
 <footer id="Hovedfooter">
   <p> Copyright &copy; TEAM 09 2018 </p>
 </footer>
+<!--Link til JavaScript dokument-->
+<script src="spill.js"></script>
   </body>
 </html>
