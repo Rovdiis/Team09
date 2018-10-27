@@ -53,7 +53,7 @@ let height = spriteHeight / rows;
 let curFrame = 0;
 let frameCount = 2;
 let x = 0;
-let y = -100;
+let y = 0;
 let srcX;
 let srcY;
 let speed = -12;
