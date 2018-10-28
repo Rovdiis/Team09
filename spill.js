@@ -44,31 +44,21 @@ let stadie2 = document.getElementById("stadie2");
 let stadie3 = document.getElementById("stadie3");
 let canvasWidth = 400;
 let canvasHeight = 550;
-let spriteWidth = 125;
-let spriteHeight = 62.5;
-let rows = 1;
-let cols = 2;
-let width = spriteWidth / cols;
-let height = spriteHeight / rows;
-let curFrame = 0;
-let frameCount = 2;
-let x = 180;
-let y = 0;
-let srcX;
-let srcY;
-let speed = -12;
+
 let canvas = document.getElementById("spill1");
 let doAnimation = true;
+let worm1 = new Image();
+
 
 
 
 canvas.width = canvasWidth;
 canvas.height = canvasHeight;
 
-let ctx = canvas.getContext("2d");
+
 let playerctx = canvas.getContext("2d");
 
-
+player();
 function player() {
   base_image = new Image();
   base_image.src = "/Users/jarloysteinrovde/Downloads/sprite-animation/FULLSET3liv.png";
@@ -79,8 +69,30 @@ function player() {
 }
 
 function animation(){
-  let worm1 = new Image();
-    //worm1.onload = function() {
+
+  let spriteWidth = 125;
+  let spriteHeight = 62.5;
+  let rows = 1;
+  let cols = 2;
+  let width = spriteWidth / cols;
+  let height = spriteHeight / rows;
+  let curFrame = 0;
+  let frameCount = 2;
+  let x = 180;
+  let y = 0;
+  let srcX;
+  let srcY;
+  let speed = -12;
+  //let worm = [];
+
+let ctx = canvas.getContext("2d");
+    worm1.onload = function() {
+
+      function draw() {
+        updateFrame();
+        ctx.drawImage(worm1, srcX, srcY, width, height, x, y, width, height);
+      }
+
       function updateFrame() {
         curFrame = ++curFrame % frameCount;
         srcX = curFrame * width;
@@ -90,35 +102,21 @@ function animation(){
         y -= speed;
       }
 
-      function draw() {
-        updateFrame();
-        ctx.drawImage(worm1, srcX, srcY, width, height, x, y, width, height);
-      }
+
 
     setInterval(draw, 500);
+
     if(!doAnimation){
       ctx.clearRect(worm1, srcX, srcY, width, height, x, y, width, height);
-      ctx = null;
-      rows = 0;
-      cols = 0;
-      width = 0;
-      height = 0;
-      curFrame = 0;
-      frameCount = 0;
-      x = 0;
-      y = 0;
-      srcX = 0;
-      srcY = 0;
-      speed = 0;
+      ctx.clearRect(x, y, width, height);
       return;
     }
 
-  //  };
+   };
   worm1.src = "/Users/jarloysteinrovde/Downloads/sprite-animation/spritetest2.png";
 }
 
 
-player();
 
 
 setInterval(player, 0.001);
@@ -193,6 +191,8 @@ function checkValue() {
         "The word is: " + letters.splice(i).join("");
       //Legger til et poeng
       points++;
+      resetCanvas()
+
     }
   } else {
     //Hvis bruker trykker feil bokstav
@@ -207,8 +207,9 @@ function goAgain() {
   i = 0;
   currentChar = null;
   rightWord = false;
-  resetCanvas()
   newWord();
+  animation();
+  //doAnimation = true;
   // stadie3.style.opacity = "0";
   // stadie3.style.filter = "alpha(opacity=0)";
 }
