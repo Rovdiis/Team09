@@ -52,48 +52,75 @@ let width = spriteWidth / cols;
 let height = spriteHeight / rows;
 let curFrame = 0;
 let frameCount = 2;
-let x = 0;
+let x = 180;
 let y = 0;
 let srcX;
 let srcY;
 let speed = -12;
 let canvas = document.getElementById("spill1");
+let doAnimation = true;
+
+
+
 canvas.width = canvasWidth;
 canvas.height = canvasHeight;
 
 let ctx = canvas.getContext("2d");
+let playerctx = canvas.getContext("2d");
 
-
-let worm1 = new Image();
-worm1.onload = function() {
-  function updateFrame() {
-    curFrame = ++curFrame % frameCount;
-    srcX = curFrame * width;
-    ctx.clearRect(x, y, width, height);
-
-    srcY = 0 * height;
-    y -= speed;
-  }
-
-  function draw() {
-    updateFrame();
-    ctx.drawImage(worm1, srcX, srcY, width, height, x, y, width, height);
-  }
-
-  setInterval(draw, 500);
-};
-worm1.src = "/Users/jarloysteinrovde/Downloads/sprite-animation/spritetest2.png";
-
-player();
 
 function player() {
   base_image = new Image();
   base_image.src = "/Users/jarloysteinrovde/Downloads/sprite-animation/FULLSET3liv.png";
-  base_image.onload = function() {
-    ctx.drawImage(base_image, 0, 150, 400, 400);
-  };
+//  base_image.onload = function() {
+    playerctx.drawImage(base_image, 0, 150, 400, 400);
+//  };
 
 }
+
+function animation(){
+  let worm1 = new Image();
+    //worm1.onload = function() {
+      function updateFrame() {
+        curFrame = ++curFrame % frameCount;
+        srcX = curFrame * width;
+        ctx.clearRect(x, y, width, height);
+
+        srcY = 0 * height;
+        y -= speed;
+      }
+
+      function draw() {
+        updateFrame();
+        ctx.drawImage(worm1, srcX, srcY, width, height, x, y, width, height);
+      }
+
+    setInterval(draw, 500);
+    if(!doAnimation){
+      ctx.clearRect(worm1, srcX, srcY, width, height, x, y, width, height);
+      ctx = null;
+      rows = 0;
+      cols = 0;
+      width = 0;
+      height = 0;
+      curFrame = 0;
+      frameCount = 0;
+      x = 0;
+      y = 0;
+      srcX = 0;
+      srcY = 0;
+      speed = 0;
+      return;
+    }
+
+  //  };
+  worm1.src = "/Users/jarloysteinrovde/Downloads/sprite-animation/spritetest2.png";
+}
+
+
+player();
+
+
 setInterval(player, 0.001);
 
 
@@ -120,6 +147,7 @@ function splitWord() {
 function newWord() {
   randomItem = list[Math.floor(Math.random() * list.length)];
   splitWord();
+  animation();
   currentChar = letters[i];
 }
 //Denne funksjonen sjekker om det du taster på tastaturet er det samme som neste bokstav
@@ -140,25 +168,25 @@ function checkValue() {
       document.getElementById("word").innerHTML =
         "The word is: " + letters.splice(i).join("");
 
-      if (numberOfLetters * 0.3 >= letters.length) {
-        worm1.style.opacity = "0";
-        worm1.style.filter = "alpha(opacity=100)";
-        stadie3.style.opacity = "0";
-        stadie3.style.filter = "alpha(opacity=0)";
-      } else if (
-        numberOfLetters * 0.3 <= letters.length &&
-        numberOfLetters * 0.7 >= letters.length
-      ) {
-        stadie1.style.opacity = "0";
-        stadie1.style.filter = "alpha(opacity=0)";
-        stadie2.style.opacity = "1";
-        stadie2.style.filter = "alpha(opacity=100)";
-      } else {
-        stadie2.style.opacity = "0";
-        stadie2.style.filter = "alpha(opacity=0)";
-        stadie3.style.opacity = "1";
-        stadie3.style.filter = "alpha(opacity=100)";
-      }
+      // if (numberOfLetters * 0.3 >= letters.length) {
+      //   worm1.style.opacity = "0";
+      //   worm1.style.filter = "alpha(opacity=100)";
+      //   stadie3.style.opacity = "0";
+      //   stadie3.style.filter = "alpha(opacity=0)";
+      // } else if (
+      //   numberOfLetters * 0.3 <= letters.length &&
+      //   numberOfLetters * 0.7 >= letters.length
+      // ) {
+      //   stadie1.style.opacity = "0";
+      //   stadie1.style.filter = "alpha(opacity=0)";
+      //   stadie2.style.opacity = "1";
+      //   stadie2.style.filter = "alpha(opacity=100)";
+      // } else {
+      //   stadie2.style.opacity = "0";
+      //   stadie2.style.filter = "alpha(opacity=0)";
+      //   stadie3.style.opacity = "1";
+      //   stadie3.style.filter = "alpha(opacity=100)";
+      // }
     } else {
       rightWord = true; //jepp, sett til null
       document.getElementById("word").innerHTML =
@@ -179,7 +207,11 @@ function goAgain() {
   i = 0;
   currentChar = null;
   rightWord = false;
+  resetCanvas()
   newWord();
-  stadie3.style.opacity = "0";
-  stadie3.style.filter = "alpha(opacity=0)";
+  // stadie3.style.opacity = "0";
+  // stadie3.style.filter = "alpha(opacity=0)";
 }
+function resetCanvas() {
+        doAnimation = false;
+      }
