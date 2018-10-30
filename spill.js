@@ -45,17 +45,7 @@ let theWorm = document.getElementById("theWorm");
 let pos = 100;
 let canvasWidth = 400;
 let canvasHeight = 550;
-// let spriteWidth = 125;
-// let spriteHeight = 62.5;
-// let rows = 1;
-// let cols = 2;
-// let width = spriteWidth / cols;
-// let height = spriteHeight / rows;
 let canvas = document.getElementById("spill1");
-// let doAnimation = true;
-// let worm1 = new Image();
-// let frameCount = 2;
-// let speed = -12;
 canvas.width = canvasWidth;
 canvas.height = canvasHeight;
 
@@ -76,10 +66,12 @@ function player() {
 animate();
 function animate() {
   var theWorm = document.getElementById("theWorm");
-  var id = setInterval(frame, 50);
+  var id = setInterval(frame, 25);
   function frame() {
     if (pos == 430) {
       clearInterval(id);
+      console.log("Game over");
+
     } else {
       pos++;
       theWorm.style.top = pos + 'px';
@@ -88,11 +80,7 @@ function animate() {
 }
 
 
-
-
-
 setInterval(player, 0.001);
-
 
 function play(event) {
   keyPressed = event.keyCode;
