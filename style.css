@@ -129,11 +129,17 @@ position:relative;
 }
 
 #theWorm{
-  width: 62.5px;
-  height: 62.5px;
+  width: 150px;
+  height: 90px;
   position: absolute;
-  /*background-image: url("/Users/jarloysteinrovde/Desktop/bilder_spill/wormstadie1.gif");*/
   left: 48%;
   z-index: 10;
+  color: #00ff00;
+}
+#explotion{
+  z-index: 11;
+  position: absolute;
+  top: -60px;
+  left: -110px;
 
 }
