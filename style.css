@@ -75,7 +75,7 @@ body {
 }
 
 .spill{
-background-Color: darkblue;
+background-image: url('/Users/jarloysteinrovde/Desktop/bilder_spill/maingame.png');
 opacity:1;
 position:relative;
 padding-left: 0;
