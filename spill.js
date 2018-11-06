@@ -27,7 +27,62 @@ let list = [
   "HEADPHONES",
   "SCANNER",
   "JOYSTICK",
-  "GAMEPAD"
+  "GAMEPAD",
+  "WORLD WIDE WEB",
+  "WIRELESS LOCAL AREA NETWORK",
+  "WIDE AREA NETWORK",
+  "WORLD WIDE WEB",
+  "WINDOWS MEDIA AUDIO",
+  "WINDOWS MEDIA VIDEO",
+  "VISUAL BASIC",
+  "VIRTUAL REALITY",
+  "UNICODE TRANSFORMATION FORMAT",
+  "UNIFORM RESOURCE LOCATOR",
+  "TRANSPORT CONTROL PROTOCOL",
+  "SERVICE SET IDENTIFIER",
+  "SECURE DIGITAL",
+  "SERIAL ADVANCED TECHNOLOGY ATTACHMENT",
+  "PORTABLE NETWORK GRAPHICS",
+  "PHP HYPERTEXT PREPROCESSOR",
+  "PROGRAMMED DATA PROCESSOR",
+  "PORTABLE DOCUMENT FORMAT",
+  "PERIPHERCAL COMPONENT INTERCONNECT",
+  "PERSONAL COMPUTER",
+  "PERSONAL AREA NETWORK",
+  "OPERATING SYSTEM",
+  "NETWORK INTERFACE CARD",
+  "NETWORK ADDRESS TRANSLATION",
+  "MOTION PICTURE EXPERTS GROUP",
+  "MULTIMEDIA MESSAGE SERVICE",
+  "METROPOLITAN AREA NETWORK",
+  "MEDIA ACCESS CONTROL",
+  "LIGHT EMITTING DIODE",
+  "LOCAL AREA NETWORK",
+  "JOINT PHOTOGRAPHIC EXPERTS GROUP",
+  "INTERNET SERVICE PROVIDER",
+  "INTEGRATED SERVICES DIGITAL NETWORK",
+  "INTERNET PROTOCOL",
+  "HIGH DEFINITION MULTIMEDIA INTERFACE",
+  "GATEWAY",
+  "GRAPHICAL USER INTERFACE",
+  "GLOBAL POSITIONING SYSTEM",
+  "GRAPHICS INTERCHANGE FORMAT",
+  "FILE TRANSFER PROTOCOL",
+  "FRAMES PER SECOND",
+  "FILE ALLOCATION TABLE",
+  "DIGITAL USER INTERFACE",
+  "DISK OPERATING SYSTEM",
+  "DOMAIN NAME SYSTEM",
+  "DIRECT MEMORY ACCESS",
+  "DYNAMIC HOST CONFIGURATION PROTOCOL",
+  "CHIPSET",
+  "AUDIO VIDEO INTERLEAVE",
+  "ADVANCED TECHNOLOGY EXTENDED",
+  "ADVANCED TECHNOLOGY",
+  "APPLICATION PROGRAM INTERFACE",
+  "ADVANCED MICRO DEVICES",
+  "ARITHMETIC LOGIC UNIT",
+  "ARTIFICIAL INTELLIGENCE"
 ];
 let randomItem;
 let keyPressed;
@@ -41,50 +96,78 @@ let numberOfLetters = 0;
 let stadie1 = document.getElementById("stadie1");
 let stadie2 = document.getElementById("stadie2");
 let stadie3 = document.getElementById("stadie3");
-let theWorm = document.getElementById("theWorm");
 let explotion = document.getElementById("explotion");
-let pos = 100;
+let gameOverScreen = document.getElementById("gameOverScreen");
+let pos = 80;
 let canvasWidth = 400;
 let canvasHeight = 550;
 let canvas = document.getElementById("spill1");
+let life = 0;
+let thePoints = 470;
+let theWorm = document.getElementById("theWorm");
+let id = setInterval(frame, 50);
+//let speed = 50;
 canvas.width = canvasWidth;
 canvas.height = canvasHeight;
-
+//Fjerner funksjonen som gjør at siden scroller når spacebar blir trykket.
+window.onkeydown = function(e) {
+  return !(e.keyCode == 32);
+};
 
 let playerctx = canvas.getContext("2d");
 
-player();
 function player() {
   base_image = new Image();
-  base_image.src = "/Users/jarloysteinrovde/Downloads/sprite-animation/FULLSET3liv.png";
-    playerctx.drawImage(base_image, 0, 150, 400, 400);
-
+if(life === 0){
+  base_image.src =
+    "/Users/jarloysteinrovde/Desktop/bilder_spill/FULLSET3liv.png";
+  playerctx.drawImage(base_image, 0, 150, 400, 400);
+}
+if(life === 1){
+  base_image.src =
+    "/Users/jarloysteinrovde/Desktop/bilder_spill/FULLSET2liv.png";
+  playerctx.drawImage(base_image, 0, 150, 400, 400);
+}
+if(life === 2){
+  base_image.src =
+    "/Users/jarloysteinrovde/Desktop/bilder_spill/FULLSET1liv.png";
+  playerctx.drawImage(base_image, 0, 150, 400, 400);
 }
 
 
-animate();
-function animate() {
-  var theWorm = document.getElementById("theWorm");
-  var id = setInterval(frame, 50);
+}
+setInterval(player, 1);
+
+
   function frame() {
     if (pos == 390) {
+      life++;
+      console.log(life);
       clearInterval(id);
-      console.log("Game over");
-
+      pos = 389;
+      goAgainWrong();
+    } else if (life === 3) {
+      //alert("Game over. Your final score is: " + points);
+      gameOverScreen.style.opacity = "1";
+      gameOverScreen.style.filter = "alpha(opacity=100)";
+      canvas.style.opacity = "0.5";
+      canvas.style.filter = "alpha(opacity=50)";
+      base_image.src =
+        "/Users/jarloysteinrovde/Desktop/bilder_spill/FULLSET0liv.png";
+      playerctx.drawImage(base_image, 0, 150, 400, 400);
     } else {
       pos++;
-      theWorm.style.top = pos + 'px';
+      theWorm.style.top = pos + "px";
     }
   }
-}
 
 
-setInterval(player, 0.001);
 
 function play(event) {
   keyPressed = event.keyCode;
   keyPressedChar = String.fromCharCode(keyPressed);
   document.getElementById("points").innerHTML = "Din poengsum er: " + points;
+
 
   splitWord();
   checkValue();
@@ -101,13 +184,13 @@ function newWord() {
   randomItem = list[Math.floor(Math.random() * list.length)];
   splitWord();
 
+
   currentChar = letters[i];
 }
 //Denne funksjonen sjekker om det du taster på tastaturet er det samme som neste bokstav
 function checkValue() {
   if (rightWord) {
     //Hvis ordet er riktig
-    wormsplotion();
 
     goAgain();
     return;
@@ -120,7 +203,6 @@ function checkValue() {
       document.getElementById("word").innerHTML = letters.splice(i).join("");
 
       if (numberOfLetters * 0.3 >= letters.length) {
-        explotion.innerHTML = " ";
         stadie1.style.opacity = "1";
         stadie1.style.filter = "alpha(opacity=100)";
         stadie3.style.opacity = "0";
@@ -133,19 +215,19 @@ function checkValue() {
         stadie1.style.filter = "alpha(opacity=0)";
         stadie2.style.opacity = "1";
         stadie2.style.filter = "alpha(opacity=100)";
+        explotion.innerHTML = "<img src='/Users/jarloysteinrovde/Desktop/bilder_spill/blank.gif";
+
       } else {
         stadie2.style.opacity = "0";
         stadie2.style.filter = "alpha(opacity=0)";
         stadie3.style.opacity = "1";
         stadie3.style.filter = "alpha(opacity=100)";
-
       }
     } else {
       rightWord = true; //jepp, sett til null
       document.getElementById("word").innerHTML = letters.splice(i).join("");
-      //Legger til et poeng
-      points++;
-
+      //Legger til et poeng basert på posisjonen til marken når den forsvinner
+      points += (thePoints-pos);
     }
   } else {
     //Hvis bruker trykker feil bokstav
@@ -154,19 +236,46 @@ function checkValue() {
 }
 //Denne funksjonen kjører det som trengs for at et nytt ord skal kunne dukke opp når man er ferdig med forrige ord.
 function goAgain() {
+  document.getElementById("word").innerHTML = ("");
+  explotion.innerHTML =
+    "<img src='/Users/jarloysteinrovde/Desktop/bilder_spill/explosion-3.gif'> ";
   i = 0;
   currentChar = null;
   rightWord = false;
-  newWord();
-  stadie3.style.opacity = "0";
-  stadie3.style.filter = "alpha(opacity=0)";
-  stadie1.style.opacity = "1";
-  stadie1.style.filter = "alpha(opacity=100)";
+  //speed--;
+  setTimeout(delayNext, 500);
+//delayNext();
 
-  pos = 100;
+
+
 }
+function delayNext(){
+stadie2.style.opacity = "0";
+stadie2.style.filter = "alpha(opacity=0)";
+stadie3.style.opacity = "0";
+stadie3.style.filter = "alpha(opacity=0)";
+stadie1.style.opacity = "1";
+stadie1.style.filter = "alpha(opacity=100)";
 
-function wormsplotion(){
-  explotion.innerHTML = "<img src='/Users/jarloysteinrovde/Desktop/bilder_spill/explosion-3.gif'>";
+pos = 80;
+newWord();
+frame = null;
+setInterval(frame, 0);
 
+}
+function goAgainWrong(){
+    document.getElementById("word").innerHTML = ("");
+    i = 0;
+    currentChar = null;
+    rightWord = false;
+    pos = 80;
+    newWord();
+    id = setInterval(frame, 50);
+    console.log("skal kjøre ny nåååååå");
+    stadie2.style.opacity = "0";
+    stadie2.style.filter = "alpha(opacity=0)";
+    stadie3.style.opacity = "0";
+    stadie3.style.filter = "alpha(opacity=0)";
+    stadie1.style.opacity = "1";
+    stadie1.style.filter = "alpha(opacity=100)";
 }

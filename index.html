@@ -52,7 +52,7 @@
 
 <div class="container">
 
-  <div id="points"></div>
+  <div id="points" class="points"></div>
 
 <!-- A grey horizontal navbar that becomes vertical on small screens -->
 
@@ -70,9 +70,9 @@
     <img src="/Users/jarloysteinrovde/Desktop/bilder_spill/wormstadie2_7.gif"style="position: absolute; opacity: 0; bottom: 0px;" id="stadie2">
     <img src="/Users/jarloysteinrovde/Desktop/bilder_spill/wormstadie3_3.gif"style="position: absolute; opacity: 0; bottom: 0px;" id="stadie3">
     <div id="word"></div>
-
-
   </div>
+
+</div>
 <!-- Dette er canvas som spillet skal ligge i !-->
 <canvas id="spill1" class="spill">
 
@@ -86,7 +86,11 @@
 </div>
 <!-- Cointainer !-->
 
-
+<div id="gameOverScreen">
+  <h3>Ormulf has hijacked your computer</h3>
+  <p>Ormulf has now grown and taken over all machines on planet earth.<br>
+      You have failed you job as sole protector of earth, and all hope is lost.<br><br>
+        Your score is:  <div class="points"><div><button>Try again?</button>  </p>
 
 <!-- Div til andre punkter på siden. evt lede til andre nettsider -->
 <div class="container1" id="nav navbar-nav">
@@ -103,7 +107,14 @@
 
 <footer id="Hovedfooter">
   <p> Copyright &copy; TEAM 09 2018 </p>
+
 </footer>
+<div id="gameOver" width="400" height="550">
+
+
+
+
+</div>
 <!--Link til JavaScript dokument-->
 <script src="spill.js"></script>
   </body>
