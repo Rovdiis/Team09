@@ -75,7 +75,7 @@ body {
 }
 
 .spill{
-background-image: url('/Users/jarloysteinrovde/Desktop/bilder_spill/maingame.png');
+background-image: url('http://folk.ntnu.no/jarlor/spill/maingame.png');
 opacity:1;
 position:relative;
 padding-left: 0;

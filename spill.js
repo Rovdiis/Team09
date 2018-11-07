@@ -120,17 +120,17 @@ function player() {
   base_image = new Image();
 if(life === 0){
   base_image.src =
-    "/Users/jarloysteinrovde/Desktop/bilder_spill/FULLSET3liv.png";
+    "http://folk.ntnu.no/jarlor/spill/FULLSET3liv.png";
   playerctx.drawImage(base_image, 0, 150, 400, 400);
 }
 if(life === 1){
   base_image.src =
-    "/Users/jarloysteinrovde/Desktop/bilder_spill/FULLSET2liv.png";
+    "http://folk.ntnu.no/jarlor/spill/FULLSET2liv.png";
   playerctx.drawImage(base_image, 0, 150, 400, 400);
 }
 if(life === 2){
   base_image.src =
-    "/Users/jarloysteinrovde/Desktop/bilder_spill/FULLSET1liv.png";
+    "http://folk.ntnu.no/jarlor/spill/FULLSET1liv.png";
   playerctx.drawImage(base_image, 0, 150, 400, 400);
 }
 
@@ -143,8 +143,8 @@ setInterval(player, 1);
     if (pos == 390) {
       life++;
       console.log(life);
-      clearInterval(id);
-      pos = 389;
+      //clearInterval(id);
+      pos = 380;
       goAgainWrong();
     } else if (life === 3) {
       //alert("Game over. Your final score is: " + points);
@@ -153,7 +153,7 @@ setInterval(player, 1);
       canvas.style.opacity = "0.5";
       canvas.style.filter = "alpha(opacity=50)";
       base_image.src =
-        "/Users/jarloysteinrovde/Desktop/bilder_spill/FULLSET0liv.png";
+        "http://folk.ntnu.no/jarlor/spill/FULLSET0liv.png";
       playerctx.drawImage(base_image, 0, 150, 400, 400);
     } else {
       pos++;
@@ -183,6 +183,7 @@ function splitWord() {
 function newWord() {
   randomItem = list[Math.floor(Math.random() * list.length)];
   splitWord();
+
 
 
   currentChar = letters[i];
@@ -215,7 +216,7 @@ function checkValue() {
         stadie1.style.filter = "alpha(opacity=0)";
         stadie2.style.opacity = "1";
         stadie2.style.filter = "alpha(opacity=100)";
-        explotion.innerHTML = "<img src='/Users/jarloysteinrovde/Desktop/bilder_spill/blank.gif";
+        explotion.innerHTML = "<img src='http://folk.ntnu.no/jarlor/spill/blank.gif";
 
       } else {
         stadie2.style.opacity = "0";
@@ -238,7 +239,7 @@ function checkValue() {
 function goAgain() {
   document.getElementById("word").innerHTML = ("");
   explotion.innerHTML =
-    "<img src='/Users/jarloysteinrovde/Desktop/bilder_spill/explosion-3.gif'> ";
+    "<img src='http://folk.ntnu.no/jarlor/spill/explosion-3.gif'> ";
   i = 0;
   currentChar = null;
   rightWord = false;
@@ -260,22 +261,33 @@ stadie1.style.filter = "alpha(opacity=100)";
 pos = 80;
 newWord();
 frame = null;
-setInterval(frame, 0);
+setInterval(id);
 
 }
 function goAgainWrong(){
-    document.getElementById("word").innerHTML = ("");
-    i = 0;
-    currentChar = null;
-    rightWord = false;
-    pos = 80;
-    newWord();
-    id = setInterval(frame, 50);
-    console.log("skal kjøre ny nåååååå");
-    stadie2.style.opacity = "0";
-    stadie2.style.filter = "alpha(opacity=0)";
-    stadie3.style.opacity = "0";
-    stadie3.style.filter = "alpha(opacity=0)";
-    stadie1.style.opacity = "1";
-    stadie1.style.filter = "alpha(opacity=100)";
+  document.getElementById("word").innerHTML = ("");
+  explotion.innerHTML =
+    "<img src='http://folk.ntnu.no/jarlor/spill/explosion-3.gif'> ";
+  i = 0;
+  currentChar = null;
+  rightWord = false;
+  //speed--;
+  setTimeout(delayNextWrong, 500);
+//delayNext();
+}
+
+function delayNextWrong(){
+  stadie2.style.opacity = "0";
+  stadie2.style.filter = "alpha(opacity=0)";
+  stadie3.style.opacity = "0";
+  stadie3.style.filter = "alpha(opacity=0)";
+  stadie1.style.opacity = "1";
+  stadie1.style.filter = "alpha(opacity=100)";
+  console.log("Funksjonen kjører");
+  newWord();
+  setInterval(id);
+  pos = 80;
+  frame = null;
+
+
 }
