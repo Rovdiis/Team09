@@ -105,7 +105,7 @@ let canvas = document.getElementById("spill1");
 let life = 0;
 let thePoints = 470;
 let theWorm = document.getElementById("theWorm");
-let id = setInterval(frame, 50);
+let id;
 var gamesound = new Audio('/Users/jarloysteinrovde/Desktop/bilder_spill/audio.wav');
 function playSound(){
   gamesound.play();
@@ -309,4 +309,29 @@ function tryAgain(){
   gameOverScreen.style.filter = "alpha(opacity=0)";
   canvas.style.opacity = "1";
   canvas.style.filter = "alpha(opacity=100)";
+}
+
+function startGame(){
+  id = setInterval(frame, 50);
+  newWord();
+  startScreen.style.opacity = "0";
+  gameOverScreen.style.filter = "alpha(opacity=0)";
+  canvas.style.opacity = "1";
+  canvas.style.filter = "alpha(opacity=100)";
+  stadie1.style.opacity = "1";
+  stadie1.style.filter = "alpha(opacity=100)";
+
+}
+
+function onLoad(){
+  startScreen.style.opacity = "1";
+  gameOverScreen.style.filter = "alpha(opacity=100)";
+  canvas.style.opacity = "0";
+  canvas.style.filter = "alpha(opacity=0)";
+  stadie2.style.opacity = "0";
+  stadie2.style.filter = "alpha(opacity=0)";
+  stadie3.style.opacity = "0";
+  stadie3.style.filter = "alpha(opacity=0)";
+  stadie1.style.opacity = "0";
+  stadie1.style.filter = "alpha(opacity=0)";
 }
