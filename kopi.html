@@ -29,30 +29,10 @@
 <!-- -->
 <!-- -->
 <!-- -->
-<script>
-function clickCounter() {
-  if(typeof(Storage) !== "undefined") {
-      if (sessionStorage.clickcount) {
-          sessionStorage.clickcount = Number(sessionStorage.clickcount)+1;
-      } else {
-          sessionStorage.clickcount = 1;
-      }
-      document.getElementById("result").innerHTML = "You have clicked the button " + sessionStorage.clickcount + " time(s) in this session.";
-  } else {
-      document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
-  }
-}
-</script>
-
   </head>
   <body>
-
-  <div id="result"></div>
-  <p>Click the button to see the counter increase.</p>
-  <p>Close the browser tab (or window), and try again, and the counter is reset.</p>
-
     <div id="bckg-img">
-      <img id="bilde" src="bg03.png">
+      <img id="bilde" src="graphic/bg03.png">
     </div>
 
     <div id="navmeny">
@@ -67,7 +47,7 @@ function clickCounter() {
 <div class="container">
 
   <div id="points"></div>
-  <div id="progress"></div>
+  <div id="difficulty"></div>
 
 <!-- A grey horizontal navbar that becomes vertical on small screens -->
 
@@ -80,11 +60,7 @@ function clickCounter() {
 <div id="spillside" width="400" height="550">
   <div class="meny">
 
-    <img src="logo.png" id="logo"></img>
-
-    <p class="pressplay" onclick="visSpilltyper()">PLAY GAME</p>
-
-    <p class="settings" onclick="visVanskelighetsgrad()">SETTINGS</p>
+    <img src="graphic/logo.png" id="logo"></img>
 
   </div>
 
@@ -113,32 +89,102 @@ function clickCounter() {
 
 <footer id="Hovedfooter">
   <p> Copyright &copy; TEAM 09 2018 </p>
+  <button id= "testknapp" onclick="receiveDifficulty()">Hent vanskelighet</button>
 </footer>
 
 <script>
-$( document ).ready(function() {
-  });
-$( "p.pressplay" ).click(function() {
-  $( "p.pressplay" ).replaceWith("<p class='choose'>CHOOSE GAMEMODE:</p>");
-  $( "p.settings" ).replaceWith("<a href='index.html'><p class='easy'>JAVASCRIPT OG HTML</p></a>");
-  });
-  function visSpilltyper() {
-    var txt1 = "<a href='index.html'><p class='medium'>DATABASER</p></a>";
-    var txt2 = "<a href='index.html'><p class='hard'>PC-KOMPONENTER</p></a>";
-    $("div.meny").append(txt1, txt2);
-  };
+//Element for type spill. (hvilket array)
+let gamewords = js
+//Element for vanskelighetsgrad
+let difficulty = 50;
+//Elementer i hovedmenyen
+let pressPlay = "<p class='pressplay'>PLAY GAME</p>";
+let settings = "<p class='settings'>SETTINGS</p>";
+//Elementer i valg av type spill (valg av array)
+let chooseGame = "<p class='choose'>CHOOSE GAMEMODE:</p>";
+let javascript = "<a href='index.html'><p class='easy'>JAVASCRIPT OG HTML</p></a>";
+let databaser = "<a href='index.html'><p class='medium'>DATABASER</p></a>";
+let pcKomponenter = "<a href='index.html'><p class='hard'>PC-KOMPONENTER</p></a>";
+//Elementer i valg av vanskelighetsgrad (hvor for ormen beveger seg på skjermen)
+let chooseDifficulty = "<p class='choose'>CHOOSE DIFFICULTY:</p>";
+let easy = "<p class='easy'>NOOB</p>";
+let medium = "<p class='medium''>KINDA GOOD I GUESS...</p>";
+let hard = "<p class='hard''>HACKER</p>";
+// Back element
+let back = "<p class='back'>BACK</p>";
 
-$( "p.settings" ).click(function() {
-  $( "p.pressplay" ).replaceWith("<p class='choose'>CHOOSE DIFFICULTY:</p>");
-  $( "p.settings" ).replaceWith("<p class='easy' onclick='clickCounter()'>NOOB</p>");
-  });
-  function visVanskelighetsgrad() {
-    var txt3 = "<p class='medium' onclick='clickCounter()'>KINDA GOOD I GUESS...</p>";
-    var txt4 = "<p class='hard' onclick='clickCounter()'>HACKER</p>";
-    var txt5 = "<a href='kopi.html'><p class='back'>BACK</p></a>";
-    $("div.meny").append(txt3, txt4, txt5);
-  };
+//Her loader menyen
+loadMenu();
 
+  function loadMenu(){
+    $( document ).ready(function() {
+      createMenu();
+      checkPressed();
+
+      });
+
+      function checkPressed(){
+        //Funksjonen som går av når pressPlay er pressed
+        $( "p.pressplay" ).click(function() {
+          $("p").remove(); //Sletter tidligere p elementer før vi legger inn nye
+          $("div.meny").append(chooseGame, javascript, databaser, pcKomponenter, back);
+
+          //Funksjoner som velger og lagrer array som skal brukes
+          $("p.javascript").click(function(){
+            console.log("Javascript pressed");
+            sessionStorage.setItem ("gamemode", 0);
+            gamewords= parseInt(sessionStorage.getItem("game"));
+          });
+
+          });
+
+          //Funksjon som går av når settings er pressed
+          $( "p.settings" ).click(function() {
+            $("p").remove(); //Sletter tidligere p elementer før vi legger inn nye
+            $("div.meny").append(chooseDifficulty, easy, medium, hard, back);
+
+            //Funksjon som går av når NOOB er pressed
+            //lagrer vanskelighet til verdi 50
+            $("p.easy").click(function(){
+              console.log("Easy pressed");
+              sessionStorage.setItem ("vanskelighet", 50);
+              difficulty= parseInt(sessionStorage.getItem("vanskelighet"));
+            });
+
+            //Funksjon som går av når Kinda Good I Guess er pressed
+            //lagrer vanskelighet til verdi 40
+            $("p.medium").click(function(){
+              console.log("medium pressed");
+              sessionStorage.setItem ("vanskelighet", 40);
+              difficulty= parseInt(sessionStorage.getItem("vanskelighet"));
+            });
+
+            //Funksjon som går av når Hacker er pressed
+            //lagrer vanskelighet til verdi 30
+            $("p.hard").click(function(){
+              console.log("hard pressed");
+              sessionStorage.setItem ("vanskelighet", 30);
+              difficulty= parseInt(sessionStorage.getItem("vanskelighet"));
+            });
+            //Funskjonen som gjør at du går tilbake til startsiden på menyen
+            $("p.back").click(function(){
+              $("p").remove(); //Sletter tidligere p elementer før vi legger inn nye
+              loadMenu();
+            });
+          });
+      }
+  }
+
+  function createMenu (){
+    $("p").remove(); //Sletter tidligere p elementer før vi legger inn nye
+    $("div.meny").append(pressPlay, settings);
+  }
+
+  function receiveDifficulty(){
+    difficulty = parseInt(sessionStorage.getItem("vanskelighet"));
+    console.log("Vanskelighetsgraden er: ", difficulty);
+
+  }
 </script>
   </body>
 </html>
