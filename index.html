@@ -31,9 +31,7 @@
 <!-- -->
 
   </head>
-  <body onload="newWord()" onkeydown="play(event)">
-    <div id="points"></div>
-    <div id="progress"></div>
+  <body onload="onLoad()" onkeydown="play(event)">
 
 
 
@@ -52,7 +50,7 @@
 
 <div class="container">
 
-  <div id="points" class="points"></div>
+
 
 <!-- A grey horizontal navbar that becomes vertical on small screens -->
 
@@ -75,6 +73,7 @@
 </div>
 <!-- Dette er canvas som spillet skal ligge i !-->
 <canvas id="spill1" class="spill">
+  <div id="points"></div>
 
 </canvas>
 
@@ -85,12 +84,30 @@
 
 </div>
 <!-- Cointainer !-->
-
+<div id="points" class="points"></div>
+<div id="startScreen" width="33%">
+  <h1>Virus Warfare</h1>
+  <p id="lore">I en ikke så fjern fremtid har kunstig intelligens gått for langt.<br><br>
+     AI’en Ormulf, en fryktelig dataorm har manifestert seg selv i fysisk form.<br><br>
+      I en voldsom eksponentiell vekst sprer ormene seg fra maskin til maskin.<br><br>
+       På under 1 uke er halvparten av verdens servere og datamaskiner infisert. <br><br><br>
+       <h1>How to play</h1>
+       På skjermen kommer det ormer nedover skjermen med ord over dem.<br><br>
+       For å bekjempe ormene må du skrive inn ordene før de når spilleren på bunnen av skjermen.<br><br>
+       Det er viktig og trykke space mellom hvert ord, om det er flere ord over marken.<br><br>
+       Når hele ordet er borte, trykker du hvilken som helst tast for å drepe ormen.<br><br>
+   <br><br><button onclick="startGame()">Start Game!</button></p></div>
 <div id="gameOverScreen">
   <h3>Ormulf has hijacked your computer</h3>
   <p>Ormulf has now grown and taken over all machines on planet earth.<br>
       You have failed you job as sole protector of earth, and all hope is lost.<br><br>
-        Your score is:  <div class="points"><button>Try again?</button>  </p></div></div>
+      <img src="/Users/jarloysteinrovde/Desktop/bilder_spill/evenhacked.png" width="300px">
+      <div id="thePoints"> </div> <br><br><button onclick="tryAgain()">Try again?</button></p></div>
+
+
+
+
+
 
 <!-- Div til andre punkter på siden. evt lede til andre nettsider -->
 <div class="container1" id="nav navbar-nav">
