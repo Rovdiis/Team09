@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <!-- Her definerer vi rammeverk og stiler brukt til spill, samt referer til CSS fil !-->
+    <meta charset="utf-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <!-- Link til CSS dokument-->
+    <link rel="stylesheet" type="text/css" href="kopi.css">
+
+
+
+    <!-- Tittel på spillet-->
+    <title>Virus Warfare</title>
+
+
+<!-- Filer som brukes:
+ !-->
+<!-- -->
+<!-- -->
+<!-- -->
+<script>
+function clickCounter() {
+  if(typeof(Storage) !== "undefined") {
+      if (sessionStorage.clickcount) {
+          sessionStorage.clickcount = Number(sessionStorage.clickcount)+1;
+      } else {
+          sessionStorage.clickcount = 1;
+      }
+      document.getElementById("result").innerHTML = "You have clicked the button " + sessionStorage.clickcount + " time(s) in this session.";
+  } else {
+      document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+  }
+}
+</script>
+
+  </head>
+  <body>
+
+  <div id="result"></div>
+  <p>Click the button to see the counter increase.</p>
+  <p>Close the browser tab (or window), and try again, and the counter is reset.</p>
+
+    <div id="bckg-img">
+      <img id="bilde" src="bg03.png">
+    </div>
+
+    <div id="navmeny">
+      <ul class="nav">
+        <li> <a  href="index.html">Home</a> </li>
+        <li> <a  href="about.html">About us</a> </li>
+        <li> <a  href="#">Code</a> </li>
+
+      </ul>
+    </div>
+
+<div class="container">
+
+  <div id="points"></div>
+  <div id="progress"></div>
+
+<!-- A grey horizontal navbar that becomes vertical on small screens -->
+
+
+<!-- Vi setter inn script her. Det blir etter navbar o.l !-->
+
+
+<div class="row-lg-4">
+
+<div id="spillside" width="400" height="550">
+  <div class="meny">
+
+    <img src="logo.png" id="logo"></img>
+
+    <p class="pressplay" onclick="visSpilltyper()">PLAY GAME</p>
+
+    <p class="settings" onclick="visVanskelighetsgrad()">SETTINGS</p>
+
+  </div>
+
+</div>
+<!--spillside!-->
+</div>
+<!--Bootstrap: row-lg-4!-->
+
+</div>
+<!-- Cointainer !-->
+
+
+<!-- Div til andre punkter på siden. evt lede til andre nettsider -->
+<div class="container1" id="nav navbar-nav">
+
+</div>
+
+<div class="container2" id="reglerspill">
+
+</div>
+
+<div class="container3" id="omoss">
+
+</div>
+<div id="word"></div>
+
+<footer id="Hovedfooter">
+  <p> Copyright &copy; TEAM 09 2018 </p>
+</footer>
+
+<script>
+$( document ).ready(function() {
+  });
+$( "p.pressplay" ).click(function() {
+  $( "p.pressplay" ).replaceWith("<p class='choose'>CHOOSE GAMEMODE:</p>");
+  $( "p.settings" ).replaceWith("<a href='index.html'><p class='easy'>JAVASCRIPT OG HTML</p></a>");
+  });
+  function visSpilltyper() {
+    var txt1 = "<a href='index.html'><p class='medium'>DATABASER</p></a>";
+    var txt2 = "<a href='index.html'><p class='hard'>PC-KOMPONENTER</p></a>";
+    $("div.meny").append(txt1, txt2);
+  };
+
+$( "p.settings" ).click(function() {
+  $( "p.pressplay" ).replaceWith("<p class='choose'>CHOOSE DIFFICULTY:</p>");
+  $( "p.settings" ).replaceWith("<p class='easy' onclick='clickCounter()'>NOOB</p>");
+  });
+  function visVanskelighetsgrad() {
+    var txt3 = "<p class='medium' onclick='clickCounter()'>KINDA GOOD I GUESS...</p>";
+    var txt4 = "<p class='hard' onclick='clickCounter()'>HACKER</p>";
+    var txt5 = "<a href='kopi.html'><p class='back'>BACK</p></a>";
+    $("div.meny").append(txt3, txt4, txt5);
+  };
+
+</script>
+  </body>
+</html>
