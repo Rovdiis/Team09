@@ -29,28 +29,8 @@
 <!-- -->
 <!-- -->
 <!-- -->
-<script>
-function clickCounter() {
-  if(typeof(Storage) !== "undefined") {
-      if (sessionStorage.clickcount) {
-          sessionStorage.clickcount = Number(sessionStorage.clickcount)+1;
-      } else {
-          sessionStorage.clickcount = 1;
-      }
-      document.getElementById("result").innerHTML = "You have clicked the button " + sessionStorage.clickcount + " time(s) in this session.";
-  } else {
-      document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
-  }
-}
-</script>
-
   </head>
   <body>
-
-  <div id="result"></div>
-  <p>Click the button to see the counter increase.</p>
-  <p>Close the browser tab (or window), and try again, and the counter is reset.</p>
-
     <div id="bckg-img">
       <img id="bilde" src="bg03.png">
     </div>
@@ -130,11 +110,11 @@ $( "p.pressplay" ).click(function() {
 
 $( "p.settings" ).click(function() {
   $( "p.pressplay" ).replaceWith("<p class='choose'>CHOOSE DIFFICULTY:</p>");
-  $( "p.settings" ).replaceWith("<p class='easy' onclick='clickCounter()'>NOOB</p>");
+  $( "p.settings" ).replaceWith("<p class='easy'>NOOB</p>");
   });
   function visVanskelighetsgrad() {
-    var txt3 = "<p class='medium' onclick='clickCounter()'>KINDA GOOD I GUESS...</p>";
-    var txt4 = "<p class='hard' onclick='clickCounter()'>HACKER</p>";
+    var txt3 = "<p class='medium''>KINDA GOOD I GUESS...</p>";
+    var txt4 = "<p class='hard''>HACKER</p>";
     var txt5 = "<a href='kopi.html'><p class='back'>BACK</p></a>";
     $("div.meny").append(txt3, txt4, txt5);
   };
