@@ -106,6 +106,11 @@ let life = 0;
 let thePoints = 470;
 let theWorm = document.getElementById("theWorm");
 let id = setInterval(frame, 50);
+var gamesound = new Audio('/Users/jarloysteinrovde/Desktop/bilder_spill/audio.wav');
+function playSound(){
+  gamesound.play();
+
+}
 //let speed = 50;
 canvas.width = canvasWidth;
 canvas.height = canvasHeight;
@@ -150,8 +155,10 @@ setInterval(player, 1);
       //alert("Game over. Your final score is: " + points);
       gameOverScreen.style.opacity = "1";
       gameOverScreen.style.filter = "alpha(opacity=100)";
-      canvas.style.opacity = "0.5";
-      canvas.style.filter = "alpha(opacity=50)";
+      canvas.style.opacity = "0.2";
+      canvas.style.filter = "alpha(opacity=20)";
+      letters = "";
+      randomItem = "";
       base_image.src =
         "http://folk.ntnu.no/jarlor/spill/FULLSET0liv.png";
       playerctx.drawImage(base_image, 0, 150, 400, 400);
@@ -166,7 +173,9 @@ setInterval(player, 1);
 function play(event) {
   keyPressed = event.keyCode;
   keyPressedChar = String.fromCharCode(keyPressed);
-  document.getElementById("points").innerHTML = "Din poengsum er: " + points;
+  document.getElementById("points").innerHTML = "Current score: " + points;
+  document.getElementById("thePoints").innerHTML = "Your final score is: " + points;
+
 
 
   splitWord();
@@ -183,6 +192,7 @@ function splitWord() {
 function newWord() {
   randomItem = list[Math.floor(Math.random() * list.length)];
   splitWord();
+  playSound();
 
 
 
@@ -288,6 +298,15 @@ function delayNextWrong(){
   setInterval(id);
   pos = 80;
   frame = null;
+}
 
-
+function tryAgain(){
+  points = 0;
+  i = 0;
+  life = 0;
+  goAgain();
+  gameOverScreen.style.opacity = "0";
+  gameOverScreen.style.filter = "alpha(opacity=0)";
+  canvas.style.opacity = "1";
+  canvas.style.filter = "alpha(opacity=100)";
 }
