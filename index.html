@@ -43,6 +43,14 @@
 <div class="gameContainer">
 
 <div id="spillside" width="400" height="550">
+  <div id="points" class="points"></div>
+  <div id="soundToggle" onclick="playSound()">
+      <img src="/Users/jarloysteinrovde/Desktop/bilder_spill/SOUND.png" style="position: absolute; opacity: 0; top: 60px; width: 30px;" id="sound">
+      <img src="/Users/jarloysteinrovde/Desktop/bilder_spill/NOSOUND.png"style="position: absolute; opacity: 1; top: 60px; width: 30px;" id="nosound">
+
+
+  </div>
+
   <!--Her lager jeg en div hvor vi legger inn spillmeny ved jQueryfil-->
   <div class="meny" width="400" height="550">
 
@@ -56,9 +64,9 @@
     <div id="word"></div>
   </div>
   <!-- Dette er canvas som spillet skal ligge i !-->
+
   <canvas id="spill1">
   </canvas>
-  <div id="points" class="points"></div>
 
 </div>
 
@@ -71,169 +79,30 @@
 <!-- Cointainer !-->
 
 <div id="gameOverScreen">
-  <h3>Ormulf has hijacked your computer</h3>
+  <div id="gameOverText"><h3>Ormulf has hijacked your computer</h3>
   Ormulf has now grown and taken over all machines on planet earth.<br>
       You have failed you job as sole protector of earth, and all hope is lost.<br><br>
-      <img src="/Users/jarloysteinrovde/Desktop/bilder_spill/evenhacked.png" width="300px">
-      <div id="thePoints"> </div> <br><br><button onclick="tryAgain()">Try again?</button></div>
+      <div id="thePoints"> </div> <br><br><button onclick="tryAgain()">Try again?</button></div></div>
 
 
-<footer id="Hovedfooter">
-  <p> Copyright &copy; TEAM 09 2018 </p>
 
-</footer>
 <div id="gameOver" width="400" height="550">
 
 
 
 
 </div>
+
+<footer id="Hovedfooter">
+   Copyright &copy; TEAM 09 2018 
+
+</footer>
 <!--Link til JavaScript dokument-->
 <script src="spill.js"></script>
 
 <!--Javascripten til hovedmenyen-->
 <script>
-//Elementer for startScreen
-let titel = "<div class='startScreen'><h1>Virus Warfare</h1></div>";
-let lore = "<div class='startScreen'><p id='lore'>I en ikke så fjern fremtid har kunstig intelligens gått for langt.<br><br> AI’en Ormulf, en fryktelig dataorm har manifestert seg selv i fysisk form.<br><br> I en voldsom eksponentiell vekst sprer ormene seg fra maskin til maskin.<br><br> På under 1 uke er halvparten av verdens servere og datamaskiner infisert. <br><br><br><p></p></div>";
-let howToTitle = "<div class='startScreen'><h1>How to play</h1></div>";
-let howTo = "<div class='startScreen'><p>På skjermen kommer det ormer nedover skjermen med ord over dem.<br><br>For å bekjempe ormene må du skrive inn ordene før de når spilleren på bunnen av skjermen.<br><br>Det er viktig og trykke space mellom hvert ord, om det er flere ord over marken.<br><br>Når hele ordet er borte, trykker du hvilken som helst tast for å drepe ormen.<br><br></p></div>";
-let playButton = "<div class='startScreen'><p class='button'><br><br><button>Start Game!</button></p></div>"
-//Element for type spill. (hvilket array)
-let gamewords = 0;
-//Element for vanskelighetsgrad
-let difficulty = 50;
-//Element for logo på meny
-let menylogo = "<img src='graphic/logo.png' id='logo'></img>";
-//Elementer i hovedmenyen
-let pressPlay = "<p class='pressplay'>PLAY GAME</p>";
-let settings = "<p class='settings'>SETTINGS</p>";
-//Elementer i valg av type spill (valg av array)
-let chooseGame = "<p class='choose'>CHOOSE GAMEMODE:</p>";
-let javascript = "<p class='easy'>JAVASCRIPT OG HTML</p>";
-let databaser = "<p class='medium'>DATABASER</p>";
-let pcKomponenter = "<p class='hard'>PC-KOMPONENTER</p>";
-//Elementer i valg av vanskelighetsgrad (hvor for ormen beveger seg på skjermen)
-let chooseDifficulty = "<p class='choose'>CHOOSE DIFFICULTY:</p>";
-let easy = "<p class='easy'>NOOB</p>";
-let medium = "<p class='medium''>KINDA GOOD I GUESS...</p>";
-let hard = "<p class='hard''>HACKER</p>";
-// Back element
-let back = "<p class='back'>BACK</p>";
 
-//Her loader menyen
-createMenuLogo ()
-loadMenu();
-
-  function loadMenu(){
-    $( document ).ready(function() {
-      createMenu();
-      checkPressed();
-
-      });
-
-      function checkPressed(){
-        //Funksjonen som går av når pressPlay er pressed
-        $( "p.pressplay" ).click(function() {
-          $("p").remove(); //Sletter tidligere p elementer før vi legger inn nye
-          $("div.meny").append(chooseGame, javascript, databaser, pcKomponenter, back);
-
-          //Funksjoner som velger og lagrer array som skal brukes før startGame screen
-          $("p.easy").click(function(){
-            sessionStorage.setItem ("gamemode", 0);
-            gamewords= parseInt(sessionStorage.getItem("gamemode"));
-            console.log("javascript pressed")
-            $("div.meny").empty(); //Fjerner alt i meny diven.
-            $("div.meny").append(titel, lore, howToTitle, howTo, playButton)
-            //onLoad();
-            playGame();
-          });
-          // Funksjon som velger og larer array som brukes før startGame screen
-          $("p.medium").click(function(){
-            sessionStorage.setItem ("gamemode", 1);
-            gamewords= parseInt(sessionStorage.getItem("gamemode"));
-            console.log("databaser pressed")
-            $("div.meny").empty(); //Fjerner alt i meny diven.
-            $("div.meny").append(titel, lore, howToTitle, howTo, playButton)
-            //onLoad();
-            playGame();
-          });
-          $("p.hard").click(function(){
-            sessionStorage.setItem ("gamemode", 2);
-            gamewords= parseInt(sessionStorage.getItem("gamemode"));
-            console.log("pcKomponenter pressed")
-            $("div.meny").empty(); //Fjerner alt i meny diven.
-            $("div.meny").append(titel, lore, howToTitle, howTo, playButton)
-            //onLoad();
-            playGame();
-          });
-          $("p.back").click(function(){
-            $("p").remove(); //Sletter tidligere p elementer før vi legger inn nye
-            loadMenu();
-          });
-          });
-
-          //Funksjon som går av når settings er pressed
-          $( "p.settings" ).click(function() {
-            $("p").remove(); //Sletter tidligere p elementer før vi legger inn nye
-            $("div.meny").append(chooseDifficulty, easy, medium, hard, back);
-
-            //Funksjon som går av når NOOB er pressed
-            //lagrer vanskelighet til verdi 50
-            $("p.easy").click(function(){
-              console.log("Easy pressed");
-              sessionStorage.setItem ("vanskelighet", 50);
-              difficulty= parseInt(sessionStorage.getItem("vanskelighet"));
-              loadMenu();
-            });
-
-            //Funksjon som går av når Kinda Good I Guess er pressed
-            //lagrer vanskelighet til verdi 40
-            $("p.medium").click(function(){
-              console.log("medium pressed");
-              sessionStorage.setItem ("vanskelighet", 40);
-              difficulty= parseInt(sessionStorage.getItem("vanskelighet"));
-              loadMenu();
-            });
-
-            //Funksjon som går av når Hacker er pressed
-            //lagrer vanskelighet til verdi 30
-            $("p.hard").click(function(){
-              console.log("hard pressed");
-              sessionStorage.setItem ("vanskelighet", 30);
-              difficulty= parseInt(sessionStorage.getItem("vanskelighet"));
-              loadMenu();
-            });
-            //Funskjonen som gjør at du går tilbake til startsiden på menyen
-            $("p.back").click(function(){
-              $("p").remove(); //Sletter tidligere p elementer før vi legger inn nye
-              loadMenu();
-            });
-          });
-      }
-  }
-
-  function createMenu (){
-    $("p").remove(); //Sletter tidligere p elementer før vi legger inn nye
-    $("div.meny").append(pressPlay, settings);
-
-  }
-  function createMenuLogo (){
-    $("div.meny").append(menylogo);
-  }
-
-  function playGame(){
-    $("p.button").click(function(){
-      console.log("button pressed");
-      $("div.meny").remove();
-      startGame();
-    });
-  }
-  function receiveDifficulty(){
-    difficulty = parseInt(sessionStorage.getItem("vanskelighet"));
-    console.log("Vanskelighetsgraden er: ", difficulty);
-
-  }
 </script>
   </body>
 </html>

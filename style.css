@@ -90,18 +90,21 @@ padding-left: 0;
    margin-top:40px;
    display: block;
 border:1px solid white;
+z-index: 1;
 }
 
 #points{
   position:absolute;
+  text-align: center;
   height:auto;
-  width:auto;
-  top:100px;
-  padding-left: 34%;
-  right:66%;
+  width:100%;
+  top:75px;
   z-index:2;
   color:white;
   margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
 }
 
 
@@ -112,11 +115,13 @@ border:1px solid white;
 }
 
 #Hovedfooter{
-color:#fff;
+color: white;
 text-align:center;
 padding:20px;
-bottom:0;
+bottom:50px;
+z-index: 1110;
 position:relative;
+
 
 }
 
@@ -151,10 +156,11 @@ position:relative;
 
 #gameOverScreen{
   background-image: url("/Users/jarloysteinrovde/Desktop/bilder_spill/hacked.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
   width: 100%;
   height: 100%;
-  text-align: center;
-  font-size: 30px;
   top: 50px;
   margin: auto;
   position: fixed;
@@ -162,6 +168,13 @@ position:relative;
   z-index: -60;
   color: #ff0000;
   opacity: 0;
+}
+#gameOverText{
+  position: relative;
+  text-align: center;
+  font-size: 50px;
+
+  margin-top:200px;
 }
 
 .startScreen{

@@ -1,4 +1,5 @@
-let list = [
+let list = [];
+let pc = [
   "MOTHERBOARD",
   "CASE",
   "POWER SUPPLY UNIT",
@@ -84,6 +85,348 @@ let list = [
   "ARITHMETIC LOGIC UNIT",
   "ARTIFICIAL INTELLIGENCE"
 ];
+let code = [
+  "INNERHTML",
+  "BREAK",
+  "CONTINUE",
+  "FUNCTION",
+  "FOR",
+  "WHILE",
+  "IF",
+  "ELSE",
+  "SWITCH",
+  "RETURN",
+  "VAR",
+  "LET",
+  "STRING",
+  "BOOLEAN",
+  "NUMBER",
+  "UNDEFINED",
+  "ONCHANGE",
+  "ONCLICK",
+  "ONMOUSEHOVER",
+  "ONMOUSEOUT",
+  "ONKEYDOWN",
+  "ONLOAD",
+  "TOUPPERCASE",
+  "TOLOWERCASE",
+  "SLICE",
+  "SPLICE",
+  "ARRAY",
+  "INDEXOF",
+  "VALUEOF",
+  "PARSEINT",
+  "NAN",
+  "DATE",
+  "WRITE",
+  "ALERT",
+  "PROMPT",
+  "LOG",
+  "CONST",
+  "TYPEOF",
+  "INSTANCEOF",
+  "FRAME",
+  "SETINTERVAL",
+  "CLEARINTERVAL",
+  "EVENT",
+  "INPUT",
+  "DOCTYPE HTML",
+  "HYPERTEXT MARKUP LANGUAGE",
+  "HEAD",
+  "BODY",
+  "TITLE",
+  "META CHARSET",
+  "META NAME",
+  "IMG",
+  "HEIGHT",
+  "WIDTH",
+  "STYLE",
+  "SCRIPT",
+  "DISABLED",
+  "TABLE",
+  "HEADER",
+  "COLOR",
+  "FONT",
+  "BORDER",
+  "PADDING",
+  "MARGIN",
+  "CLASS",
+  "ID",
+  "LINK",
+  "TARGET",
+  "FLOAT",
+  "FLEX",
+  "ALIGN",
+  "FOOTER",
+  "LIST",
+  "ADDRESS",
+  "ARTICLE",
+  "OUTPUT",
+  "VIDEO",
+  "CANVAS",
+  "MAIN",
+  "NAV",
+  "FORM",
+  "RADIO",
+  "IFRAME",
+  "BASE",
+  "SUBMIT",
+  "BUTTON",
+  "ACTION",
+  "METHOD",
+  "GET",
+  "POST",
+  "AUTOCOMPLETE",
+  "NOVALIDATE",
+  "NAME",
+  "SELECT",
+  "VALUE",
+  "TEXTAREA",
+  "LABEL",
+  "LEGEND",
+  "OPTION",
+  "DATALIST",
+  "PASSWORD",
+  "RESET",
+  "CHECKBOX",
+  "MAX",
+  "MIN",
+  "REQUIRED",
+  "READONLY",
+  "SIZE",
+  "AUTOFOCUS",
+  "PLACEHOLDER",
+  "ABORT",
+  "AFTERPRINT",
+  "ANIMATIONEND",
+  "ANIMATIONITERATION",
+  "ANIMATIONSTART",
+  "BEFOREPRINT",
+  "BEFOREUNLOAD",
+  "BLUR",
+  "CANPLAY",
+  "CHANGE",
+  "CLICK",
+  "CONTEXTMENY",
+  "COPY",
+  "CUT",
+  "DBLCLICK",
+  "DRAG",
+  "DRAGEND",
+  "DRAGENTER",
+  "DRAGLEAVE",
+  "DRAGOVER",
+  "DRAGSTART",
+  "DROP",
+  "DURATIONCHANGE",
+  "ENDED",
+  "ERROR",
+  "FOCUS",
+  "FOCUSIN",
+  "FOCUSOUT",
+  "HASHCHANGE",
+  "FULLSCREENERROR",
+  "FULLSCREENCHANGE",
+  "INVALID",
+  "KEYDOWN",
+  "KEYPRESS",
+  "KEYUP",
+  "LOAD",
+  "LOADEDDATA",
+  "LOADEDMETADATA",
+  "LOADSTART",
+  "MESSAGE",
+  "MOUSEDOWN",
+  "MOUSEENTER",
+  "MOUSELEAVE",
+  "MOUSEMOVE",
+  "MOUSEOVER",
+  "MOUSEOUT",
+  "MOUSEUP",
+  "MOUSEWHEEL",
+  "OFFLINE",
+  "ONLINE",
+  "OPEN",
+  "PAGEHIDE",
+  "PAGESHOW",
+  "PASTE",
+  "PAUSE",
+  "PLAY",
+  "PLAYING",
+  "POPSTATE",
+  "PROGRESS",
+  "RATECHANGE",
+  "RESIZE",
+  "SCROLL",
+  "SEARCH",
+  "SEEKED",
+  "SEEKING",
+  "SHOW",
+  "STALLED",
+  "STORAGE",
+  "SUSPEND",
+  "TIMEUPDATE",
+  "TOGGLE",
+  "TOUCHCANCEL",
+  "TOUCHEND",
+  "TOUCHMOVE",
+  "TOUCHSTART",
+  "TRANSITIONEND",
+  "UNLOAD",
+  "VOLUMECHANGE",
+  "WAITING",
+  "WHEEL",
+  "CASCADING STYLE SHEETS"
+];
+let sql = [
+  "ADD",
+  "ADD CONSTRAINT",
+  "ALTER",
+  "ALTER COLUMN",
+  "ALTER TABLE",
+  "ALL",
+  "AND",
+  "ANY",
+  "AS",
+  "ASC",
+  "BETWEEN",
+  "CASE",
+  "CHECK",
+  "COLUMN",
+  "CONSTRAINT",
+  "CREATE",
+  "CREATE DATABASE",
+  "DATABASE",
+  "CREATE INDEX",
+  "CREATE TABLE",
+  "CREATE PROCEDURE",
+  "CREATE UNIQUE INDEX",
+  "CREATE VIEW",
+  "DEFAULT",
+  "DELETE",
+  "DESC",
+  "DISTINCT",
+  "DROP",
+  "DROP COLUMN",
+  "DROP CONSTRAINT",
+  "DROP DATABASE",
+  "DROP DEFAULT",
+  "DROP INDEX",
+  "DROP TABLE",
+  "DROP VIEW",
+  "EXEC",
+  "EXISTS",
+  "FOREIGN KEY",
+  "FROM",
+  "FULL OUTER JOIN",
+  "GROUP BY",
+  "HAVING",
+  "IN",
+  "INDEX",
+  "INNER JOIN",
+  "INSERT INTO",
+  "INSERT INTO SELECT",
+  "IS NULL",
+  "IS NOT NULL",
+  "JOIN",
+  "LEFT JOIN",
+  "LIKE",
+  "LIMIT",
+  "NOT",
+  "NOT NULL",
+  "OR",
+  "ORDER BY",
+  "OUTER JOIN",
+  "PRIMARY KEY",
+  "PROCEDURE",
+  "RIGHT JOIN",
+  "ROWNUM",
+  "SELECT",
+  "SELECT DISTINCT",
+  "SELECT INTO",
+  "SELECT TOP",
+  "SET",
+  "TABLE",
+  "TOP",
+  "TRUNCATE TABLE",
+  "UNION",
+  "UNION ALL",
+  "UNIQUE",
+  "UPDATE",
+  "VALUES",
+  "VIEW",
+  "WHERE",
+  "ASCII",
+  "CHAR LENGTH",
+  "CONCAT",
+  "FIELD",
+  "FIND IN SET",
+  "FORMAT",
+  "INSERT",
+  "LEFT",
+  "LENGTH",
+  "LOCATE",
+  "LOWER",
+  "MID",
+  "POSITION",
+  "REPEAT",
+  "REPLACE",
+  "REVERSE",
+  "RIGHT",
+  "SPACE",
+  "SUBSTRING",
+  "TRIM",
+  "UCASE",
+  "UPPER",
+  "CHARINDEX",
+  "DATALENGTH",
+  "DIFFERENCE",
+  "REPLICATE",
+  "SOUNDEX",
+  "STUFF",
+  "TRANSLATE",
+  "UNICODE",
+  "SPLIT",
+  "SOME",
+  "CHAR",
+  "VARCHAR",
+  "TINYTEXT",
+  "TEXT",
+  "BLOB",
+  "MEDIUMTEXT",
+  "MEDIUMBLOB",
+  "LONGTEXT",
+  "LONGBLOB",
+  "SET",
+  "INT",
+  "FLOAT",
+  "DOUBLE",
+  "DECIMAL",
+  "DATE",
+  "DATETIME",
+  "TIMESTAMP",
+  " TIME",
+  "YEAR",
+  "BINARY",
+  "VARBINARY",
+  "IMAGE",
+  "BIT",
+  "NUMERIC",
+  "MONEY",
+  "REAL",
+  "CURSOR",
+  "MEMO",
+  "INTEGER",
+  "LONG",
+  "SINGLE",
+  "CURRENCY",
+  "AUTONUMBER",
+  "HYPERLINK",
+  " LOOKUP WIZARD",
+  "FULL JOIN",
+  "UPDATE",
+  "AUTO INCREMENT"
+];
 let randomItem;
 let keyPressed;
 let keyPressedChar;
@@ -106,10 +449,80 @@ let life = 0;
 let thePoints = 470;
 let theWorm = document.getElementById("theWorm");
 let id;
-var gamesound = new Audio('/Users/jarloysteinrovde/Desktop/bilder_spill/audio.wav');
-function playSound(){
-  gamesound.play();
+let gamesound = new Audio(
+  "/Users/jarloysteinrovde/Desktop/bilder_spill/audio.wav"
+);
+let diffBugFix;
+let soundToggle = document.getElementById("soundToggle");
+let sound = document.getElementById("sound");
+let nosound = document.getElementById("nosound");
+let soundValue = 0;
 
+//Elementer for startScreen
+let titel = "<div class='startScreen'><h1>Virus Warfare</h1></div>";
+let lore =
+  "<div class='startScreen'><p id='lore'>I en ikke så fjern fremtid har kunstig intelligens gått for langt.<br><br> AI’en Ormulf, en fryktelig dataorm har manifestert seg selv i fysisk form.<br><br> I en voldsom eksponentiell vekst sprer ormene seg fra maskin til maskin.<br><br> På under 1 uke er halvparten av verdens servere og datamaskiner infisert. <br><br><br><p></p></div>";
+let howToTitle = "<div class='startScreen'><h1>How to play</h1></div>";
+let howTo =
+  "<div class='startScreen'><p>På skjermen kommer det ormer nedover skjermen med ord over dem.<br><br>For å bekjempe ormene må du skrive inn ordene før de når spilleren på bunnen av skjermen.<br><br>Det er viktig og trykke space mellom hvert ord, om det er flere ord over marken.<br><br>Når hele ordet er borte, trykker du hvilken som helst tast for å drepe ormen.<br><br></p></div>";
+let playButton =
+  "<div class='startScreen'><p class='button'><br><br><button>Start Game!</button></p></div>";
+//Element for type spill. (hvilket array)
+let gamewords = 0;
+//Element for vanskelighetsgrad
+let difficulty = 50;
+//Element for logo på meny
+let menylogo = "<img src='graphic/logo.png' id='logo'></img>";
+//Elementer i hovedmenyen
+let pressPlay = "<p class='pressplay'>PLAY GAME</p>";
+let settings = "<p class='settings'>SETTINGS</p>";
+//Elementer i valg av type spill (valg av array)
+let chooseGame = "<p class='choose'>CHOOSE GAMEMODE:</p>";
+let javascript = "<p class='easy'>JAVASCRIPT OG HTML</p>";
+let databaser = "<p class='medium'>DATABASER</p>";
+let pcKomponenter = "<p class='hard'>PC-KOMPONENTER</p>";
+//Elementer i valg av vanskelighetsgrad (hvor for ormen beveger seg på skjermen)
+let chooseDifficulty = "<p class='choose'>CHOOSE DIFFICULTY:</p>";
+let easy = "<p class='easy'>NOOB</p>";
+let medium = "<p class='medium''>KINDA GOOD I GUESS...</p>";
+let hard = "<p class='hard''>HACKER</p>";
+// Back element
+let back = "<p class='back'>BACK</p>";
+
+//
+// function checkGameMode(){
+//
+//   if(gamewords === 0){
+//     list = code;
+//   }else if(gamewords === 1){
+//     list = pc;
+//   }else if(gamewords === 2){
+//     list = sql;
+//   }
+//   else{
+//     alert("Gamemode not chosen");
+//   }
+//
+//
+// }
+
+function playSound() {
+  console.log("Button Clicked");
+  if (soundValue === 1) {
+    gamesound.pause();
+    sound.style.opacity = "0";
+    sound.style.filter = "alpha(opacity=0)"; //For nettlesere som ikke støtter .opacity funksjon
+    nosound.style.opacity = "1";
+    nosound.style.filter = "alpha(opacity=1)";
+    soundValue = 0;
+  } else if (soundValue === 0) {
+    gamesound.play();
+    nosound.style.opacity = "0";
+    nosound.style.filter = "alpha(opacity=0)"; //For nettlesere som ikke støtter .opacity funksjon
+    sound.style.opacity = "1";
+    sound.style.filter = "alpha(opacity=1)";
+    soundValue = 1;
+  }
 }
 //let speed = 50;
 canvas.width = canvasWidth;
@@ -123,62 +536,57 @@ let playerctx = canvas.getContext("2d");
 
 function player() {
   base_image = new Image();
-if(life === 0){
-  base_image.src =
-    "http://folk.ntnu.no/jarlor/spill/FULLSET3liv.png";
-  playerctx.drawImage(base_image, 0, 150, 400, 400);
-}
-if(life === 1){
-  base_image.src =
-    "http://folk.ntnu.no/jarlor/spill/FULLSET2liv.png";
-  playerctx.drawImage(base_image, 0, 150, 400, 400);
-}
-if(life === 2){
-  base_image.src =
-    "http://folk.ntnu.no/jarlor/spill/FULLSET1liv.png";
-  playerctx.drawImage(base_image, 0, 150, 400, 400);
-}
-
-
+  if (life === 0) {
+    base_image.src = "http://folk.ntnu.no/jarlor/spill/FULLSET3liv.png";
+    playerctx.drawImage(base_image, 0, 150, 400, 400);
+  }
+  if (life === 1) {
+    base_image.src = "http://folk.ntnu.no/jarlor/spill/FULLSET2liv.png";
+    playerctx.drawImage(base_image, 0, 150, 400, 400);
+  }
+  if (life === 2) {
+    base_image.src = "http://folk.ntnu.no/jarlor/spill/FULLSET1liv.png";
+    playerctx.drawImage(base_image, 0, 150, 400, 400);
+  }
 }
 setInterval(player, 1);
 
+function frame() {
+  if (pos == 390) {
+    pos = diffBugFix;
+    stadie1.style.opacity = "0";
+    stadie1.style.filter = "alpha(opacity=0)"; //For nettlesere som ikke støtter .opacity funksjon
+    stadie2.style.opacity = "0";
+    stadie2.style.filter = "alpha(opacity=0)";
+    stadie3.style.opacity = "0";
+    stadie3.style.filter = "alpha(opacity=0)";
+    life++;
+    console.log(life);
+    //clearInterval(id);
+    goAgainWrong();
+  } else if (life === 3) {
+    //alert("Game over. Your final score is: " + points);
+    gameOverScreen.style.opacity = "1";
+    gameOverScreen.style.filter = "alpha(opacity=100)";
+    gameOverScreen.style.zIndex = "60";
 
-  function frame() {
-    if (pos == 390) {
-      life++;
-      console.log(life);
-      //clearInterval(id);
-      pos = 380;
-      goAgainWrong();
-    } else if (life === 3) {
-      //alert("Game over. Your final score is: " + points);
-      gameOverScreen.style.opacity = "1";
-      gameOverScreen.style.filter = "alpha(opacity=100)";
-      gameOverScreen.style.zIndex = "60";
-
-      canvas.style.opacity = "0.2";
-      canvas.style.filter = "alpha(opacity=20)";
-      letters = "";
-      randomItem = "";
-      base_image.src =
-        "http://folk.ntnu.no/jarlor/spill/FULLSET0liv.png";
-      playerctx.drawImage(base_image, 0, 150, 400, 400);
-    } else {
-      pos++;
-      theWorm.style.top = pos + "px";
-    }
+    canvas.style.opacity = "0.2";
+    canvas.style.filter = "alpha(opacity=20)";
+    letters = "";
+    randomItem = "";
+    base_image.src = "http://folk.ntnu.no/jarlor/spill/FULLSET0liv.png";
+    playerctx.drawImage(base_image, 0, 150, 400, 400);
+  } else {
+    pos++;
+    theWorm.style.top = pos + "px";
   }
-
-
+}
 
 function play(event) {
   keyPressed = event.keyCode;
   keyPressedChar = String.fromCharCode(keyPressed);
   document.getElementById("points").innerHTML = "Current score: " + points;
   //document.getElementById("thePoints").innerHTML = "Your final score is: " + points;
-
-
 
   splitWord();
   checkValue();
@@ -194,9 +602,6 @@ function splitWord() {
 function newWord() {
   randomItem = list[Math.floor(Math.random() * list.length)];
   splitWord();
-  playSound();
-
-
 
   currentChar = letters[i];
 }
@@ -228,8 +633,8 @@ function checkValue() {
         stadie1.style.filter = "alpha(opacity=0)";
         stadie2.style.opacity = "1";
         stadie2.style.filter = "alpha(opacity=100)";
-        explotion.innerHTML = "<img src='http://folk.ntnu.no/jarlor/spill/blank.gif";
-
+        explotion.innerHTML =
+          "<img src='http://folk.ntnu.no/jarlor/spill/blank.gif";
       } else {
         stadie2.style.opacity = "0";
         stadie2.style.filter = "alpha(opacity=0)";
@@ -240,7 +645,7 @@ function checkValue() {
       rightWord = true; //jepp, sett til null
       document.getElementById("word").innerHTML = letters.splice(i).join("");
       //Legger til et poeng basert på posisjonen til marken når den forsvinner
-      points += (thePoints-pos);
+      points += thePoints - pos;
     }
   } else {
     //Hvis bruker trykker feil bokstav
@@ -249,7 +654,7 @@ function checkValue() {
 }
 //Denne funksjonen kjører det som trengs for at et nytt ord skal kunne dukke opp når man er ferdig med forrige ord.
 function goAgain() {
-  document.getElementById("word").innerHTML = ("");
+  document.getElementById("word").innerHTML = "";
   explotion.innerHTML =
     "<img src='http://folk.ntnu.no/jarlor/spill/explosion-3.gif'> ";
   i = 0;
@@ -257,27 +662,24 @@ function goAgain() {
   rightWord = false;
   //speed--;
   setTimeout(delayNext, 500);
-//delayNext();
-
-
-
+  //delayNext();
 }
-function delayNext(){
-stadie2.style.opacity = "0";
-stadie2.style.filter = "alpha(opacity=0)";
-stadie3.style.opacity = "0";
-stadie3.style.filter = "alpha(opacity=0)";
-stadie1.style.opacity = "1";
-stadie1.style.filter = "alpha(opacity=100)";
+function delayNext() {
+  pos = 80;
 
-pos = 80;
-newWord();
-frame = null;
-setInterval(id);
+  stadie2.style.opacity = "0";
+  stadie2.style.filter = "alpha(opacity=0)";
+  stadie3.style.opacity = "0";
+  stadie3.style.filter = "alpha(opacity=0)";
 
+  newWord();
+  frame = null;
+  setInterval(id);
+  stadie1.style.opacity = "1";
+  stadie1.style.filter = "alpha(opacity=100)";
 }
-function goAgainWrong(){
-  document.getElementById("word").innerHTML = ("");
+function goAgainWrong() {
+  document.getElementById("word").innerHTML = "";
   explotion.innerHTML =
     "<img src='http://folk.ntnu.no/jarlor/spill/explosion-3.gif'> ";
   i = 0;
@@ -285,10 +687,12 @@ function goAgainWrong(){
   rightWord = false;
   //speed--;
   setTimeout(delayNextWrong, 500);
-//delayNext();
+  //delayNext();
 }
 
-function delayNextWrong(){
+function delayNextWrong() {
+  pos = 80;
+
   stadie2.style.opacity = "0";
   stadie2.style.filter = "alpha(opacity=0)";
   stadie3.style.opacity = "0";
@@ -297,12 +701,10 @@ function delayNextWrong(){
   stadie1.style.filter = "alpha(opacity=100)";
   console.log("Funksjonen kjører");
   newWord();
-  setInterval(id);
-  pos = 80;
   frame = null;
 }
 
-function tryAgain(){
+function tryAgain() {
   points = 0;
   i = 0;
   life = 0;
@@ -313,7 +715,7 @@ function tryAgain(){
   canvas.style.filter = "alpha(opacity=100)";
 }
 
-function startGame(){
+function startGame() {
   id = setInterval(frame, difficulty);
   newWord();
   /*startScreen.style.opacity = "0";
@@ -322,18 +724,127 @@ function startGame(){
   canvas.style.filter = "alpha(opacity=100)";
   stadie1.style.opacity = "1";
   stadie1.style.filter = "alpha(opacity=100)";
-
 }
-/*
-function onLoad(){
-  startScreen.style.opacity = "1";
-  startScreen.style.filter = "alpha(opacity=100)";
-  canvas.style.opacity = "0";
-  canvas.style.filter = "alpha(opacity=0)";
-  stadie2.style.opacity = "0";
-  stadie2.style.filter = "alpha(opacity=0)";
-  stadie3.style.opacity = "0";
-  stadie3.style.filter = "alpha(opacity=0)";
-  stadie1.style.opacity = "0";
-  stadie1.style.filter = "alpha(opacity=0)";
-}*/
+
+//Her loader menyen
+createMenuLogo();
+loadMenu();
+
+function loadMenu() {
+  $(document).ready(function() {
+    createMenu();
+    checkPressed();
+  });
+
+  function checkPressed() {
+    //Funksjonen som går av når pressPlay er pressed
+    $("p.pressplay").click(function() {
+      $("p").remove(); //Sletter tidligere p elementer før vi legger inn nye
+      $("div.meny").append(
+        chooseGame,
+        javascript,
+        databaser,
+        pcKomponenter,
+        back
+      );
+
+      //Funksjoner som velger og lagrer array som skal brukes før startGame screen
+      $("p.easy").click(function() {
+        sessionStorage.setItem("gamemode", 0);
+        gamewords = parseInt(sessionStorage.getItem("gamemode"));
+        console.log("javascript pressed");
+        $("div.meny").empty(); //Fjerner alt i meny diven.
+        $("div.meny").append(titel, lore, howToTitle, howTo, playButton);
+        list = code;
+        //onLoad();
+        playGame();
+      });
+      // Funksjon som velger og larer array som brukes før startGame screen
+      $("p.medium").click(function() {
+        sessionStorage.setItem("gamemode", 1);
+        gamewords = parseInt(sessionStorage.getItem("gamemode"));
+        console.log("databaser pressed");
+        $("div.meny").empty(); //Fjerner alt i meny diven.
+        $("div.meny").append(titel, lore, howToTitle, howTo, playButton);
+        list = sql;
+        //onLoad();
+        playGame();
+      });
+      $("p.hard").click(function() {
+        sessionStorage.setItem("gamemode", 2);
+        gamewords = parseInt(sessionStorage.getItem("gamemode"));
+        console.log("pcKomponenter pressed");
+        $("div.meny").empty(); //Fjerner alt i meny diven.
+        $("div.meny").append(titel, lore, howToTitle, howTo, playButton);
+        list = pc;
+        //onLoad();
+        playGame();
+      });
+      $("p.back").click(function() {
+        $("p").remove(); //Sletter tidligere p elementer før vi legger inn nye
+        loadMenu();
+      });
+    });
+
+    //Funksjon som går av når settings er pressed
+    $("p.settings").click(function() {
+      $("p").remove(); //Sletter tidligere p elementer før vi legger inn nye
+      $("div.meny").append(chooseDifficulty, easy, medium, hard, back);
+
+      //Funksjon som går av når NOOB er pressed
+      //lagrer vanskelighet til verdi 50
+      $("p.easy").click(function() {
+        console.log("Easy pressed");
+        sessionStorage.setItem("vanskelighet", 45);
+        diffBugFix = 380;
+        difficulty = parseInt(sessionStorage.getItem("vanskelighet"));
+        loadMenu();
+      });
+
+      //Funksjon som går av når Kinda Good I Guess er pressed
+      //lagrer vanskelighet til verdi 40
+      $("p.medium").click(function() {
+        console.log("medium pressed");
+        sessionStorage.setItem("vanskelighet", 35);
+        diffBugFix = 370;
+        difficulty = parseInt(sessionStorage.getItem("vanskelighet"));
+        loadMenu();
+      });
+
+      //Funksjon som går av når Hacker er pressed
+      //lagrer vanskelighet til verdi 30
+      $("p.hard").click(function() {
+        console.log("hard pressed");
+        sessionStorage.setItem("vanskelighet", 25);
+        diffBugFix = 360;
+        difficulty = parseInt(sessionStorage.getItem("vanskelighet"));
+        loadMenu();
+      });
+      //Funskjonen som gjør at du går tilbake til startsiden på menyen
+      $("p.back").click(function() {
+        $("p").remove(); //Sletter tidligere p elementer før vi legger inn nye
+        loadMenu();
+      });
+    });
+  }
+}
+
+function createMenu() {
+  $("p").remove(); //Sletter tidligere p elementer før vi legger inn nye
+  $("div.meny").append(pressPlay, settings);
+}
+function createMenuLogo() {
+  $("div.meny").append(menylogo);
+}
+
+function playGame() {
+  $("p.button").click(function() {
+    console.log("button pressed");
+    $("div.meny").remove();
+    startGame();
+  });
+}
+function receiveDifficulty() {
+  difficulty = parseInt(sessionStorage.getItem("vanskelighet"));
+  console.log("Vanskelighetsgraden er: ", difficulty);
+}
