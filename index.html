@@ -57,8 +57,8 @@
   </div>
   <!-- Dette er canvas som spillet skal ligge i !-->
   <canvas id="spill1">
-    <div id="points"></div>
   </canvas>
+  <div id="points" class="points"></div>
 
 </div>
 
@@ -69,20 +69,6 @@
 <!--Bootstrap: row-lg-4!-->
 
 <!-- Cointainer !-->
-
-<div id="points" class="points"></div>
-<!--<div id="startScreen" width="33%">
-  <h1>Virus Warfare</h1>
-  <p id="lore">I en ikke så fjern fremtid har kunstig intelligens gått for langt.<br><br>
-     AI’en Ormulf, en fryktelig dataorm har manifestert seg selv i fysisk form.<br><br>
-      I en voldsom eksponentiell vekst sprer ormene seg fra maskin til maskin.<br><br>
-       På under 1 uke er halvparten av verdens servere og datamaskiner infisert. <br><br><br>
-       <h1>How to play</h1>
-       På skjermen kommer det ormer nedover skjermen med ord over dem.<br><br>
-       For å bekjempe ormene må du skrive inn ordene før de når spilleren på bunnen av skjermen.<br><br>
-       Det er viktig og trykke space mellom hvert ord, om det er flere ord over marken.<br><br>
-       Når hele ordet er borte, trykker du hvilken som helst tast for å drepe ormen.<br><br>
-   <br><br><button onclick="startGame()">Start Game!</button></p></div>-->
 
 <div id="gameOverScreen">
   <h3>Ormulf has hijacked your computer</h3>
@@ -198,6 +184,7 @@ loadMenu();
               console.log("Easy pressed");
               sessionStorage.setItem ("vanskelighet", 50);
               difficulty= parseInt(sessionStorage.getItem("vanskelighet"));
+              loadMenu();
             });
 
             //Funksjon som går av når Kinda Good I Guess er pressed
@@ -206,6 +193,7 @@ loadMenu();
               console.log("medium pressed");
               sessionStorage.setItem ("vanskelighet", 40);
               difficulty= parseInt(sessionStorage.getItem("vanskelighet"));
+              loadMenu();
             });
 
             //Funksjon som går av når Hacker er pressed
@@ -214,6 +202,7 @@ loadMenu();
               console.log("hard pressed");
               sessionStorage.setItem ("vanskelighet", 30);
               difficulty= parseInt(sessionStorage.getItem("vanskelighet"));
+              loadMenu();
             });
             //Funskjonen som gjør at du går tilbake til startsiden på menyen
             $("p.back").click(function(){

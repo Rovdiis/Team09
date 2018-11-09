@@ -93,13 +93,14 @@ border:1px solid white;
 }
 
 #points{
-  position:relative;
-  height:0px;
-  width:0px;
+  position:absolute;
+  height:auto;
+  width:auto;
+  top:100px;
+  padding-left: 34%;
+  right:66%;
   z-index:2;
   color:white;
-  left:38%;
-  top:60px;
   margin-top: auto;
 }
 
@@ -302,7 +303,9 @@ position:relative;
   color:#00FF00;
   text-decoration: underline;
 }
-
+p:active {
+    color: #00FF00;
+}
 .active{
   text-align:center;
 }
