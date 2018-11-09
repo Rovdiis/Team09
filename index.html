@@ -125,8 +125,8 @@ let settings = "<p class='settings'>SETTINGS</p>";
 //Elementer i valg av type spill (valg av array)
 let chooseGame = "<p class='choose'>CHOOSE GAMEMODE:</p>";
 let javascript = "<p class='easy'>JAVASCRIPT OG HTML</p>";
-let databaser = "<a href='index.html'><p class='medium'>DATABASER</p></a>";
-let pcKomponenter = "<a href='index.html'><p class='hard'>PC-KOMPONENTER</p></a>";
+let databaser = "<p class='medium'>DATABASER</p>";
+let pcKomponenter = "<p class='hard'>PC-KOMPONENTER</p>";
 //Elementer i valg av vanskelighetsgrad (hvor for ormen beveger seg på skjermen)
 let chooseDifficulty = "<p class='choose'>CHOOSE DIFFICULTY:</p>";
 let easy = "<p class='easy'>NOOB</p>";
@@ -152,21 +152,39 @@ loadMenu();
           $("p").remove(); //Sletter tidligere p elementer før vi legger inn nye
           $("div.meny").append(chooseGame, javascript, databaser, pcKomponenter, back);
 
-          //Funksjoner som velger og lagrer array som skal brukes
+          //Funksjoner som velger og lagrer array som skal brukes før startGame screen
           $("p.easy").click(function(){
+            sessionStorage.setItem ("gamemode", 0);
+            gamewords= parseInt(sessionStorage.getItem("gamemode"));
             console.log("javascript pressed")
-            $("div.meny").empty();
+            $("div.meny").empty(); //Fjerner alt i meny diven.
             $("div.meny").append(titel, lore, howToTitle, howTo, playButton)
             //onLoad();
-            $("p.button").click(function(){
-              console.log("button pressed");
-              $("div.meny").remove();
-              startGame();
-            })
-            sessionStorage.setItem ("gamemode", 0);
-            gamewords= parseInt(sessionStorage.getItem("game"));
+            playGame();
           });
-
+          // Funksjon som velger og larer array som brukes før startGame screen
+          $("p.medium").click(function(){
+            sessionStorage.setItem ("gamemode", 1);
+            gamewords= parseInt(sessionStorage.getItem("gamemode"));
+            console.log("databaser pressed")
+            $("div.meny").empty(); //Fjerner alt i meny diven.
+            $("div.meny").append(titel, lore, howToTitle, howTo, playButton)
+            //onLoad();
+            playGame();
+          });
+          $("p.hard").click(function(){
+            sessionStorage.setItem ("gamemode", 2);
+            gamewords= parseInt(sessionStorage.getItem("gamemode"));
+            console.log("pcKomponenter pressed")
+            $("div.meny").empty(); //Fjerner alt i meny diven.
+            $("div.meny").append(titel, lore, howToTitle, howTo, playButton)
+            //onLoad();
+            playGame();
+          });
+          $("p.back").click(function(){
+            $("p").remove(); //Sletter tidligere p elementer før vi legger inn nye
+            loadMenu();
+          });
           });
 
           //Funksjon som går av når settings er pressed
@@ -215,6 +233,13 @@ loadMenu();
     $("div.meny").append(menylogo);
   }
 
+  function playGame(){
+    $("p.button").click(function(){
+      console.log("button pressed");
+      $("div.meny").remove();
+      startGame();
+    });
+  }
   function receiveDifficulty(){
     difficulty = parseInt(sessionStorage.getItem("vanskelighet"));
     console.log("Vanskelighetsgraden er: ", difficulty);
