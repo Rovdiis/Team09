@@ -198,15 +198,16 @@ position:relative;
   width: 50%;
 
 }
-
+/*Brukes ikke
 #logomode {
   display: block;
   width: 60%;
   height: auto;
   margin-left: auto;
   margin-right: auto;
-}
+}*/
 
+/*CSS for valg element*/
 .choose {
   color: white;
   font-size: 30px;
@@ -214,15 +215,14 @@ position:relative;
   padding-top: 20px;
   z-index: 100;
 }
-
+/*CSS for start spill*/
 .pressplay {
   color: white;
   font-size: 40px;
   text-align: center;
   padding-top: 50px;
   z-index: 100;
-}
-
+} /*Endrer CSS ved Hover*/
 .pressplay:hover {
   color:#00FF00;
   text-decoration: underline;
@@ -268,25 +268,18 @@ position:relative;
   color:#00FF00;
   text-decoration: underline;
 }
+/*CSS for Settings*/
 .settings {
   color: white;
   font-size: 40px;
   text-align: center;
   padding-top: 20px;
 }
-
 .settings:hover {
   color:#00FF00;
   text-decoration: underline;
 }
-
-.difficulty {
-  color: white;
-  font-size: 35px;
-  text-align: center;
-  padding-top: 30px;
-}
-
+/*CSS for back*/
 .back {
   color: white;
   font-size: 35px;
@@ -294,18 +287,11 @@ position:relative;
   padding-top: 30px;
 }
 
-.difficulty:hover {
-  color:#00FF00;
-  text-decoration: underline;
-}
-
 .back:hover {
   color:#00FF00;
   text-decoration: underline;
 }
-p:active {
-    color: #00FF00;
-}
+
 .active{
   text-align:center;
 }
