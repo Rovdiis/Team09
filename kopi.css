@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=VT323');
 
 body {
-
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment:fixed;
@@ -95,7 +94,7 @@ border:1px solid white;
   z-index:1;
   color:white;
   left:38%;
-  top:14%;
+  top:60px;
 }
 
 .meny {
@@ -108,7 +107,7 @@ border:1px solid white;
   margin-left: auto;
   margin-right: auto;
 }
-
+/*
 .mode {
   border: 1px solid white;
   margin-left: 35%;
@@ -119,7 +118,7 @@ border:1px solid white;
   margin-left: auto;
   margin-right: auto;
 }
-
+*/
 #logo {
   display: block;
   width: 70%;

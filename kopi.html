@@ -94,7 +94,7 @@
 
 <script>
 //Element for type spill. (hvilket array)
-let gamewords = js
+let gamewords = 0;
 //Element for vanskelighetsgrad
 let difficulty = 50;
 //Elementer i hovedmenyen
@@ -134,6 +134,11 @@ loadMenu();
             console.log("Javascript pressed");
             sessionStorage.setItem ("gamemode", 0);
             gamewords= parseInt(sessionStorage.getItem("game"));
+          });
+          
+          $("p.back").click(function(){
+            $("p").remove(); //Sletter tidligere p elementer før vi legger inn nye
+            loadMenu();
           });
 
           });

@@ -155,6 +155,8 @@ setInterval(player, 1);
       //alert("Game over. Your final score is: " + points);
       gameOverScreen.style.opacity = "1";
       gameOverScreen.style.filter = "alpha(opacity=100)";
+      gameOverScreen.style.zIndex = "60";
+
       canvas.style.opacity = "0.2";
       canvas.style.filter = "alpha(opacity=20)";
       letters = "";
@@ -174,7 +176,7 @@ function play(event) {
   keyPressed = event.keyCode;
   keyPressedChar = String.fromCharCode(keyPressed);
   document.getElementById("points").innerHTML = "Current score: " + points;
-  document.getElementById("thePoints").innerHTML = "Your final score is: " + points;
+  //document.getElementById("thePoints").innerHTML = "Your final score is: " + points;
 
 
 
@@ -312,20 +314,20 @@ function tryAgain(){
 }
 
 function startGame(){
-  id = setInterval(frame, 50);
+  id = setInterval(frame, difficulty);
   newWord();
-  startScreen.style.opacity = "0";
-  gameOverScreen.style.filter = "alpha(opacity=0)";
+  /*startScreen.style.opacity = "0";
+  startScreen.style.filter = "alpha(opacity=0)";*/
   canvas.style.opacity = "1";
   canvas.style.filter = "alpha(opacity=100)";
   stadie1.style.opacity = "1";
   stadie1.style.filter = "alpha(opacity=100)";
 
 }
-
+/*
 function onLoad(){
   startScreen.style.opacity = "1";
-  gameOverScreen.style.filter = "alpha(opacity=100)";
+  startScreen.style.filter = "alpha(opacity=100)";
   canvas.style.opacity = "0";
   canvas.style.filter = "alpha(opacity=0)";
   stadie2.style.opacity = "0";
@@ -334,4 +336,4 @@ function onLoad(){
   stadie3.style.filter = "alpha(opacity=0)";
   stadie1.style.opacity = "0";
   stadie1.style.filter = "alpha(opacity=0)";
-}
+}*/
