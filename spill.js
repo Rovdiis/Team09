@@ -1,4 +1,7 @@
+//Definerer listen vi skal bruke i koden
 let list = [];
+
+//Listene for de forskjellige spillmodusene.
 let pc = [
   "MOTHERBOARD",
   "CASE",
@@ -427,6 +430,8 @@ let sql = [
   "UPDATE",
   "AUTO INCREMENT"
 ];
+
+//Definerer variablene vi benytter i spillet
 let randomItem;
 let keyPressed;
 let keyPressedChar;
@@ -444,7 +449,7 @@ let gameOverScreen = document.getElementById("gameOverScreen");
 let pos = 80;
 let canvasWidth = 400;
 let canvasHeight = 550;
-let canvas = document.getElementById("spill1");
+let canvas = document.getElementById("gameCanvas");
 let life = 0;
 let thePoints = 470;
 let theWorm = document.getElementById("theWorm");
@@ -458,7 +463,7 @@ let sound = document.getElementById("sound");
 let nosound = document.getElementById("nosound");
 let soundValue = 0;
 
-//Elementer for startScreen
+//Definerer variablene for startScreen
 let titel = "<div class='startScreen'><h1>Virus Warfare</h1></div>";
 let lore =
   "<div class='startScreen'><p id='lore'>I en ikke så fjern fremtid har kunstig intelligens gått for langt.<br><br> AI’en Ormulf, en fryktelig dataorm har manifestert seg selv i fysisk form.<br><br> I en voldsom eksponentiell vekst sprer ormene seg fra maskin til maskin.<br><br> På under 1 uke er halvparten av verdens servere og datamaskiner infisert. <br><br><br><p></p></div>";
@@ -467,11 +472,12 @@ let howTo =
   "<div class='startScreen'><p>På skjermen kommer det ormer nedover skjermen med ord over dem.<br><br>For å bekjempe ormene må du skrive inn ordene før de når spilleren på bunnen av skjermen.<br><br>Det er viktig og trykke space mellom hvert ord, om det er flere ord over marken.<br><br>Når hele ordet er borte, trykker du hvilken som helst tast for å drepe ormen.<br><br></p></div>";
 let playButton =
   "<div class='startScreen'><p class='button'><br><br><button>Start Game!</button></p></div>";
-//Element for type spill. (hvilket array)
+
+//Variabel for å lagre type spill
 let gamewords = 0;
-//Element for vanskelighetsgrad
+//Variabel for å lagre vanskelighetsgrad
 let difficulty = 50;
-//Element for logo på meny
+//Variabel for logo på meny
 let menylogo = "<img src='graphic/logo.png' id='logo'></img>";
 //Elementer i hovedmenyen
 let pressPlay = "<p class='pressplay'>PLAY GAME</p>";
@@ -506,6 +512,7 @@ let back = "<p class='back'>BACK</p>";
 //
 // }
 
+//Funskjon for musikk på spillsiden
 function playSound() {
   console.log("Button Clicked");
   if (soundValue === 1) {

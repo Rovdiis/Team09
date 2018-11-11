@@ -23,25 +23,24 @@
 <!-- -->
 <!-- -->
 <!-- -->
-
   </head>
+
   <body onkeydown="play(event)"> <!--Flyttet ut onload="onLoad()" onkeydown="play(event)"-->
 <!-- Her legger vi inn bakgrunn for hele siden - stil ligger i CSS fil -->
     <div id="bckg-img">
       <img id="bilde" src="http://folk.ntnu.no/jarlor/spill/bg03.png">
     </div>
-<!-- Her levver vi inn toppmenyen med mulighetene 3 forskjellige muligheter -->
+<!-- Navigasjonsmeny for websiden -->
     <div id="navmeny">
       <ul class="nav">
         <li> <a  href="index.html">Home</a> </li>
         <li> <a  href="about.html">About us</a> </li>
-        <li> <a  href="#">Code</a> </li>
+        <li> <a  href="code.html">Code</a> </li>
       </ul>
     </div>
 
 
-<div class="gameContainer">
-
+<!--Div elementet for selve spillsiden -->
 <div id="spillside" width="400" height="550">
   <div id="points" class="points"></div>
   <div id="soundToggle" onclick="playSound()">
@@ -51,11 +50,12 @@
 
   </div>
 
-  <!--Her lager jeg en div hvor vi legger inn spillmeny ved jQueryfil-->
+  <!--Div for spillmeny-->
   <div class="meny" width="400" height="550">
 
   </div>
 
+<!--Ormene på skjermen-->
   <div id="theWorm">
     <div id="explotion"></div>
     <img src="http://folk.ntnu.no/jarlor/spill/wormstadie1.gif" style="position: absolute; opacity: 0; bottom: 0px;" id="stadie1">
@@ -63,46 +63,30 @@
     <img src="http://folk.ntnu.no/jarlor/spill/wormstadie3_3.gif"style="position: absolute; opacity: 0; bottom: 0px;" id="stadie3">
     <div id="word"></div>
   </div>
-  <!-- Dette er canvas som spillet skal ligge i !-->
 
-  <canvas id="spill1">
+  <!-- Canvas for spillet!-->
+  <canvas id="gameCanvas">
   </canvas>
 
 </div>
 
-
-</div>
-<!--spillside!-->
-
-<!--Bootstrap: row-lg-4!-->
-
-<!-- Cointainer !-->
-
+<!-- Game over screen-->
 <div id="gameOverScreen">
   <div id="gameOverText"><h3>Ormulf has hijacked your computer</h3>
   Ormulf has now grown and taken over all machines on planet earth.<br>
       You have failed you job as sole protector of earth, and all hope is lost.<br><br>
-      <div id="thePoints"> </div> <br><br><button onclick="tryAgain()">Try again?</button></div></div>
-
-
-
-<div id="gameOver" width="400" height="550">
-
-
-
+      <div id="thePoints"> </div> <br><br><button onclick="tryAgain()">Try again?</button>
+  </div>
 
 </div>
 
+<!--Footer med Copyright-->
 <footer id="Hovedfooter">
-   Copyright &copy; TEAM 09 2018 
-
+   Copyright &copy; TEAM 09 2018
 </footer>
+
 <!--Link til JavaScript dokument-->
 <script src="spill.js"></script>
 
-<!--Javascripten til hovedmenyen-->
-<script>
-
-</script>
   </body>
 </html>
