@@ -810,7 +810,7 @@ function loadMenu() {
       });
       $("p.hard").click(function() {
         console.log("hard pressed");
-        sessionStorage.setItem("vanskelighet", 25);
+        sessionStorage.setItem("vanskelighet", 15);
         diffBugFix = 360;
         difficulty = parseInt(sessionStorage.getItem("vanskelighet"));
         loadMenu();
