@@ -455,7 +455,7 @@ let thePoints = 470;
 let theWorm = document.getElementById("theWorm");
 let id;
 let gamesound = new Audio(
-  "/Users/jarloysteinrovde/Desktop/bilder_spill/audio.wav"
+  "http://folk.ntnu.no/jarlor/spill/audio.wav"
 );
 let diffBugFix;
 let soundToggle = document.getElementById("soundToggle");
@@ -479,7 +479,7 @@ let gamewords = 0;
 //Variabel for å lagre vanskelighetsgrad
 let difficulty = 50;
 //Variabel for logo på meny
-let menylogo = "<img src='graphic/logo.png' id='logo'></img>";
+let menylogo = "<img src='http://folk.ntnu.no/jarlor/spill/logo.png' id='logo'></img>";
 //Elementer i hovedmenyen
 let pressPlay = "<p class='pressplay'>PLAY GAME</p>";
 let settings = "<p class='settings'>SETTINGS</p>";

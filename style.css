@@ -103,7 +103,6 @@ body {
   color: white;
   text-align:center;
   padding:20px;
-  bottom:50px;
   z-index: 1110;
   position:relative;
 }
@@ -144,7 +143,7 @@ a{
 }
 
 #gameOverScreen{
-  background-image: url("/Users/jarloysteinrovde/Desktop/bilder_spill/hacked.gif");
+  background-image: url("http://folk.ntnu.no/jarlor/spill/hacked.gif");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -285,7 +284,24 @@ a{
 .active{
   text-align: center;
 }
+
 button{
   margin: auto;
   padding: 15px;
+}
+
+#sound {
+  position: absolute;
+  opacity: 1;
+  top: 60px;
+  width: 40px;
+  margin: 10px;
+}
+
+#nosound {
+  position: absolute;
+  opacity: 1;
+  top: 60px;
+  width: 40px;
+  margin: 10px;
 }
