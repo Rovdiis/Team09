@@ -252,8 +252,14 @@ body {
 
 /*CSS for startgame og tryAgain*/
 button{
+  background-color: black;
   margin: auto;
   padding: 15px;
+  border-radius: 30px;
+  color:white;
+}
+button:hover{
+  color: #00FF00;
 }
 
 /*Lydknapp*/
