@@ -63,9 +63,7 @@ body {
 }
 
 /*Her definerer vi stylen til alt som ligger i spillet*/
-/* #spillsiden{
 
-} */
 
 #gameCanvas{
   background-image: url('http://folk.ntnu.no/jarlor/spill/maingame.png');
