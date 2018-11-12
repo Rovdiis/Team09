@@ -496,7 +496,26 @@ let hard = "<p class='hard''>HACKER</p>";
 // Back element
 let back = "<p class='back'>BACK</p>";
 
+//Funksjonen som starter spillet etter at gamemode og vanskelighetsgrad er valgt
+function startGame() {
+  id = setInterval(frame, difficulty);
+  newWord();
+  canvas.style.opacity = "1";
+  canvas.style.filter = "alpha(opacity=100)";
+  stadie1.style.opacity = "1";
+  stadie1.style.filter = "alpha(opacity=100)";
+}
 
+
+//Funksjonen som mottar input fra tastaturet og sender dem videre til spillets kode.
+function play(event) {
+  keyPressed = event.keyCode;
+  keyPressedChar = String.fromCharCode(keyPressed);
+  document.getElementById("points").innerHTML = "Current score: " + points;
+
+  splitWord();
+  checkValue();
+}
 
 //Funskjon for musikk på spillsiden
 function playSound() {
@@ -545,60 +564,6 @@ function player() {
 }
 setInterval(player, 1);
 
-
-//Funksjonen som animerer ormen som faller nedover skjermen.
-function frame() {
-  if (pos == 390) {
-    pos = diffBugFix;
-    stadie1.style.opacity = "0";
-    stadie1.style.filter = "alpha(opacity=0)"; //For nettlesere som ikke støtter .opacity funksjon
-    stadie2.style.opacity = "0";
-    stadie2.style.filter = "alpha(opacity=0)";
-    stadie3.style.opacity = "0";
-    stadie3.style.filter = "alpha(opacity=0)";
-    life++;
-    console.log(life);
-    goAgainWrong();
-  } else if (life === 3) { //Game over funksjonen som stopper spillet.
-    gameOverScreen.style.opacity = "1";
-    gameOverScreen.style.filter = "alpha(opacity=100)";
-    gameOverScreen.style.zIndex = "60";
-
-    canvas.style.opacity = "0.2";
-    canvas.style.filter = "alpha(opacity=20)";
-    letters = "";
-    randomItem = "";
-    base_image.src = "http://folk.ntnu.no/jarlor/spill/FULLSET0liv.png";
-    playerctx.drawImage(base_image, 0, 150, 400, 400);
-  } else {
-    pos++;
-    theWorm.style.top = pos + "px";
-  }
-}
-
-//Funksjonen som mottar input fra tastaturet og sender dem videre til spillets kode.
-function play(event) {
-  keyPressed = event.keyCode;
-  keyPressedChar = String.fromCharCode(keyPressed);
-  document.getElementById("points").innerHTML = "Current score: " + points;
-
-  splitWord();
-  checkValue();
-}
-// Denne funksjonen splitter opp ordet til en egen array.
-function splitWord() {
-  letters = randomItem.split("");
-  //Denne displayer order på skjermen
-  document.getElementById("word").innerText = letters.join("");
-  numberOfLetters = letters.length;
-}
-//Denne funksjonen velger ut et nytt tilfeldig ord
-function newWord() {
-  randomItem = list[Math.floor(Math.random() * list.length)];
-  splitWord();
-
-  currentChar = letters[i];
-}
 //Denne funksjonen sjekker om det du taster på tastaturet er det samme som neste bokstav
 function checkValue() {
   if (rightWord) {
@@ -648,6 +613,54 @@ function checkValue() {
     document.getElementById("word").innerHTML = letters.splice(i).join("");
   }
 }
+//Funksjonen som animerer ormen som faller nedover skjermen.
+function frame() {
+  if (pos == 390) {
+    pos = diffBugFix;
+    stadie1.style.opacity = "0";
+    stadie1.style.filter = "alpha(opacity=0)"; //For nettlesere som ikke støtter .opacity funksjon
+    stadie2.style.opacity = "0";
+    stadie2.style.filter = "alpha(opacity=0)";
+    stadie3.style.opacity = "0";
+    stadie3.style.filter = "alpha(opacity=0)";
+    life++;
+    console.log(life);
+    goAgainWrong();
+  } else if (life === 3) { //Game over funksjonen som stopper spillet.
+    gameOverScreen.style.opacity = "1";
+    gameOverScreen.style.filter = "alpha(opacity=100)";
+    gameOverScreen.style.zIndex = "60";
+
+    canvas.style.opacity = "0.2";
+    canvas.style.filter = "alpha(opacity=20)";
+    letters = "";
+    randomItem = "";
+    base_image.src = "http://folk.ntnu.no/jarlor/spill/FULLSET0liv.png";
+    playerctx.drawImage(base_image, 0, 150, 400, 400);
+  } else {
+    pos++;
+    theWorm.style.top = pos + "px";
+  }
+}
+
+//Denne funksjonen velger ut et nytt tilfeldig ord
+function newWord() {
+  randomItem = list[Math.floor(Math.random() * list.length)];
+  splitWord();
+
+  currentChar = letters[i];
+}
+
+
+// Denne funksjonen splitter opp ordet til en egen array.
+function splitWord() {
+  letters = randomItem.split("");
+  //Denne displayer order på skjermen
+  document.getElementById("word").innerText = letters.join("");
+  numberOfLetters = letters.length;
+}
+
+
 //Denne funksjonen kjører det som trengs for at et nytt ord skal kunne dukke opp når man er ferdig med forrige ord.
 function goAgain() {
   document.getElementById("word").innerHTML = "";
@@ -658,6 +671,18 @@ function goAgain() {
   rightWord = false;
   setTimeout(delayNext, 500);
 }
+
+//Dersom spilleren ikke klarer å skrive inn ordet før det når bunnen av canvasen.
+function goAgainWrong() {
+  document.getElementById("word").innerHTML = "";
+  explotion.innerHTML =
+    "<img src='http://folk.ntnu.no/jarlor/spill/explosion-3.gif'> ";
+  i = 0;
+  currentChar = null;
+  rightWord = false;
+  setTimeout(delayNextWrong, 500);
+}
+
 
 //Denne funksjonen kjører en forsinkelse slik at de grafiske elementene som en eksplosjon rekker å kjøre før det nye ordet blir vist.
 function delayNext() {
@@ -675,16 +700,6 @@ function delayNext() {
   stadie1.style.filter = "alpha(opacity=100)";
 }
 
-//Dersom spilleren ikke klarer å skrive inn ordet før det når bunnen av canvasen.
-function goAgainWrong() {
-  document.getElementById("word").innerHTML = "";
-  explotion.innerHTML =
-    "<img src='http://folk.ntnu.no/jarlor/spill/explosion-3.gif'> ";
-  i = 0;
-  currentChar = null;
-  rightWord = false;
-  setTimeout(delayNextWrong, 500);
-}
 //samme som funksjonen delayNext, men dersom ordet ikke er riktig innen det når bunnen av skjermen.
 function delayNextWrong() {
   pos = 80;
@@ -699,6 +714,7 @@ function delayNextWrong() {
   newWord();
   frame = null;
 }
+
 //Funksjon som lar spilleren prøve spillet på nytt etter gameover
 function tryAgain() {
   points = 0;
@@ -710,15 +726,7 @@ function tryAgain() {
   canvas.style.opacity = "1";
   canvas.style.filter = "alpha(opacity=100)";
 }
-//Funksjonen som starter spillet etter at gamemode og vanskelighetsgrad er valgt
-function startGame() {
-  id = setInterval(frame, difficulty);
-  newWord();
-  canvas.style.opacity = "1";
-  canvas.style.filter = "alpha(opacity=100)";
-  stadie1.style.opacity = "1";
-  stadie1.style.filter = "alpha(opacity=100)";
-}
+
 
 
 ////jQuery kode for spillmeny og canvas
