@@ -719,6 +719,10 @@ function startGame() {
   stadie1.style.opacity = "1";
   stadie1.style.filter = "alpha(opacity=100)";
 }
+
+
+////jQuery kode for spillmeny og canvas
+
 //Hide og show funksjoner for canvas
 function hideCanvas(){
   $("#gameCanvas").hide();
@@ -742,7 +746,7 @@ function loadMenu() {
     //Funksjonen som går av når pressPlay er pressed
     $("p.pressplay").click(function() {
       $("p").remove(); //Sletter tidligere p elementer før vi legger inn nye
-      $("div.meny").append(
+      $("div.meny").append(//Setter inn chooseGame meny.
         chooseGame,
         javascript,
         databaser,
@@ -750,35 +754,26 @@ function loadMenu() {
         back
       );
 
-      //Funksjoner som velger og lagrer array som skal brukes før startGame screen
+      ////Funksjoner som setter array ut i fra spillmodus valg
       $("p.easy").click(function() {
-        sessionStorage.setItem("gamemode", 0);
-        gamewords = parseInt(sessionStorage.getItem("gamemode"));
-        console.log("javascript pressed");
         $("div.meny").empty(); //Fjerner alt i meny diven.
         $("div.meny").append(titel, lore, howToTitle, howTo, playButton);
         list = code;
         playGame();
       });
-      // Funksjon som velger og larer array som brukes før startGame screen
       $("p.medium").click(function() {
-        sessionStorage.setItem("gamemode", 1);
-        gamewords = parseInt(sessionStorage.getItem("gamemode"));
-        console.log("databaser pressed");
         $("div.meny").empty(); //Fjerner alt i meny diven.
         $("div.meny").append(titel, lore, howToTitle, howTo, playButton);
         list = sql;
         playGame();
       });
       $("p.hard").click(function() {
-        sessionStorage.setItem("gamemode", 2);
-        gamewords = parseInt(sessionStorage.getItem("gamemode"));
-        console.log("pcKomponenter pressed");
         $("div.meny").empty(); //Fjerner alt i meny diven.
         $("div.meny").append(titel, lore, howToTitle, howTo, playButton);
         list = pc;
         playGame();
       });
+      //Funskjonen som gjør at du går tilbake til startsiden på menyen
       $("p.back").click(function() {
         $("p").remove(); //Sletter tidligere p elementer før vi legger inn nye
         loadMenu();
@@ -788,10 +783,9 @@ function loadMenu() {
     //Funksjon som går av når settings er pressed
     $("p.settings").click(function() {
       $("p").remove(); //Sletter tidligere p elementer før vi legger inn nye
-      $("div.meny").append(chooseDifficulty, easy, medium, hard, back);
+      $("div.meny").append(chooseDifficulty, easy, medium, hard, back); //Tegner chooseDifficulty meny
 
-      //Funksjon som går av når NOOB er pressed
-      //lagrer vanskelighet til verdi 45
+      ////Funksjoner som setter farten til ormen og lagrer den gjennom variabelen difficulty.
       $("p.easy").click(function() {
         console.log("Easy pressed");
         sessionStorage.setItem("vanskelighet", 45);
@@ -799,9 +793,6 @@ function loadMenu() {
         difficulty = parseInt(sessionStorage.getItem("vanskelighet"));
         loadMenu();
       });
-
-      //Funksjon som går av når Kinda Good I Guess er pressed
-      //lagrer vanskelighet til verdi 35
       $("p.medium").click(function() {
         console.log("medium pressed");
         sessionStorage.setItem("vanskelighet", 35);
@@ -809,9 +800,6 @@ function loadMenu() {
         difficulty = parseInt(sessionStorage.getItem("vanskelighet"));
         loadMenu();
       });
-
-      //Funksjon som går av når Hacker er pressed
-      //lagrer vanskelighet til verdi 35
       $("p.hard").click(function() {
         console.log("hard pressed");
         sessionStorage.setItem("vanskelighet", 25);
@@ -827,11 +815,12 @@ function loadMenu() {
     });
   }
 }
-
+//Funksjonen som lager første menybilde til spillet
 function createMenu() {
   $("p").remove(); //Sletter tidligere p elementer før vi legger inn nye
   $("div.meny").append(pressPlay, settings);
 }
+//Funksjon som loader menylogo
 function createMenuLogo() {
   $("div.meny").append(menylogo);
 }
@@ -843,9 +832,4 @@ function playGame() {
     showCanvas();
     startGame();
   });
-
-} //Setter vanskelighetsgraden i sessionStorage.
-function receiveDifficulty() {
-  difficulty = parseInt(sessionStorage.getItem("vanskelighet"));
-  console.log("Vanskelighetsgraden er: ", difficulty);
 }
