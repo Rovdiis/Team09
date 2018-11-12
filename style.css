@@ -64,7 +64,6 @@ body {
 
 /*Her definerer vi stylen til alt som ligger i spillet*/
 
-
 #gameCanvas{
   background-image: url('http://folk.ntnu.no/jarlor/spill/maingame.png');
   opacity: 0;
@@ -304,4 +303,19 @@ button{
   top: 60px;
   width: 40px;
   margin: 10px;
+}
+
+/* About us CSS */
+
+.card text-center{
+  text-align: center;
+}
+
+.card {
+  height: 35rem;
+  overflow: auto;
+}
+
+h5 {
+  color: #00FF00;
 }
