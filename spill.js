@@ -719,8 +719,16 @@ function startGame() {
   stadie1.style.opacity = "1";
   stadie1.style.filter = "alpha(opacity=100)";
 }
+//Hide og show funksjoner for canvas
+function hideCanvas(){
+  $("#gameCanvas").hide();
+}
+function showCanvas(){
+  $("#gameCanvas").show();
+};
 
 //Her loader menyen
+hideCanvas();
 createMenuLogo();
 loadMenu();
 
@@ -750,7 +758,6 @@ function loadMenu() {
         $("div.meny").empty(); //Fjerner alt i meny diven.
         $("div.meny").append(titel, lore, howToTitle, howTo, playButton);
         list = code;
-        //onLoad();
         playGame();
       });
       // Funksjon som velger og larer array som brukes før startGame screen
@@ -761,7 +768,6 @@ function loadMenu() {
         $("div.meny").empty(); //Fjerner alt i meny diven.
         $("div.meny").append(titel, lore, howToTitle, howTo, playButton);
         list = sql;
-        //onLoad();
         playGame();
       });
       $("p.hard").click(function() {
@@ -834,8 +840,10 @@ function playGame() {
   $("p.button").click(function() {
     console.log("button pressed");
     $("div.meny").remove();
+    showCanvas();
     startGame();
   });
+
 } //Setter vanskelighetsgraden i sessionStorage.
 function receiveDifficulty() {
   difficulty = parseInt(sessionStorage.getItem("vanskelighet"));
