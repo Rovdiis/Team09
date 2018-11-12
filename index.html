@@ -16,23 +16,23 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <!-- Link til logo i tittel hode -->
     <link rel="shortcut icon" href="graphic/logoheader.ico" />
-    <!-- Tittel på spillet-->
+
+<!-- Tittel på spillet-->
     <title>Virus Warfare</title>
-<!-- Filer som brukes:
- !-->
+
+<!-- Filer som brukes:-->
 <!-- MUSIKK AV:
 Music: "Europa" by PICE, https://8bitpice.bandcamp.com/
 PICE license: https://creativecommons.org/licenses/by-nc/3.0/legalcode -->
-<!-- -->
-<!-- -->
+
   </head>
 
-  <body onkeydown="play(event)"> <!--Flyttet ut onload="onLoad()" onkeydown="play(event)"-->
-<!-- Her legger vi inn bakgrunn for hele siden - stil ligger i CSS fil -->
+  <body onkeydown="play(event)">
+    <!-- Bakgrunnsbilde-->
     <div id="bckg-img">
       <img id="bilde" src="http://folk.ntnu.no/jarlor/spill/bg03.png">
     </div>
-<!-- Navigasjonsmeny for websiden -->
+    <!-- Navigasjonsmeny for websiden -->
     <div id="navmeny">
       <ul class="nav">
         <li> <a  href="index.html">Home</a> </li>
@@ -42,54 +42,48 @@ PICE license: https://creativecommons.org/licenses/by-nc/3.0/legalcode -->
     </div>
 
 
-<!--Div elementet for selve spillsiden -->
-<div id="spillside" width="400" height="550">
-  <div id="points" class="points"></div>
-  <div id="soundToggle" onclick="playSound()">
-      <img src="http://folk.ntnu.no/jarlor/spill/SOUND.png" id="sound">
-      <img src="http://folk.ntnu.no/jarlor/spill/NOSOUND.png" id="nosound">
+    <!--Div elementet for selve spillsiden -->
+    <div id="spillside" width="400" height="550">
+      <div id="points" class="points"></div>
+      <div id="soundToggle" onclick="playSound()">
+          <img src="http://folk.ntnu.no/jarlor/spill/SOUND.png" id="sound">
+          <img src="http://folk.ntnu.no/jarlor/spill/NOSOUND.png" id="nosound">
+      </div>
 
+      <!--Div for spillmeny-->
+      <div class="meny" width="400" height="550"></div>
 
-  </div>
+      <!--Ormene på skjermen-->
+      <div id="theWorm">
+        <div id="explotion"></div>
+        <img src="http://folk.ntnu.no/jarlor/spill/wormstadie1.gif" style="position: absolute; opacity: 0; bottom: 0px;" id="stadie1">
+        <img src="http://folk.ntnu.no/jarlor/spill/wormstadie2_7.gif"style="position: absolute; opacity: 0; bottom: 0px;" id="stadie2">
+        <img src="http://folk.ntnu.no/jarlor/spill/wormstadie3_3.gif"style="position: absolute; opacity: 0; bottom: 0px;" id="stadie3">
+        <div id="word"></div>
+      </div>
 
-  <!--Div for spillmeny-->
-  <div class="meny" width="400" height="550">
+      <!-- Canvas for spillet!-->
+      <canvas id="gameCanvas">
+      </canvas>
 
-  </div>
+    </div>
 
-<!--Ormene på skjermen-->
-  <div id="theWorm">
-    <div id="explotion"></div>
-    <img src="http://folk.ntnu.no/jarlor/spill/wormstadie1.gif" style="position: absolute; opacity: 0; bottom: 0px;" id="stadie1">
-    <img src="http://folk.ntnu.no/jarlor/spill/wormstadie2_7.gif"style="position: absolute; opacity: 0; bottom: 0px;" id="stadie2">
-    <img src="http://folk.ntnu.no/jarlor/spill/wormstadie3_3.gif"style="position: absolute; opacity: 0; bottom: 0px;" id="stadie3">
-    <div id="word"></div>
-  </div>
+    <!-- Game over screen-->
+    <div id="gameOverScreen">
+      <div id="gameOverText"><h1>Ormulf has hijacked your computer</h1><br>
+      Ormulf has now grown and taken over all machines on planet earth.<br><br>
+          You have failed you job as sole protector of earth, and all hope is lost.<br><br>
+          Maybe there was no way to stop Ormulf?<br><br>
+          <div id="thePoints"> </div> <br><br><button onclick="tryAgain()">Try again?</button>
+      </div>
 
-  <!-- Canvas for spillet!-->
-  <canvas id="gameCanvas">
-  </canvas>
+    </div>
 
-</div>
-
-<!-- Game over screen-->
-<div id="gameOverScreen">
-  <div id="gameOverText"><h1>Ormulf has hijacked your computer</h1><br>
-  Ormulf has now grown and taken over all machines on planet earth.<br><br>
-      You have failed you job as sole protector of earth, and all hope is lost.<br><br>
-      Maybe there was no way to stop Ormulf?<br><br>
-      <div id="thePoints"> </div> <br><br><button onclick="tryAgain()">Try again?</button>
-  </div>
-
-</div>
-
-<!--Footer med Copyright-->
-<footer id="Hovedfooter">
-   <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
-</footer>
-
-<!--Link til JavaScript dokument-->
-<script src="spill.js"></script>
-
+    <!--Footer med Copyright-->
+    <footer id="Hovedfooter">
+       <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+    </footer>
   </body>
+  <!--Link til JavaScript dokument-->
+  <script src="spill.js"></script>
 </html>
