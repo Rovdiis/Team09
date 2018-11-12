@@ -71,20 +71,6 @@ body {
 
 /* Deck css */
 
-.card text-center{
-  text-align: center;
-}
-
-.card {
-  height: 35rem;
-  overflow: auto;
-}
-
-/* Deck tittel */
-
-h5 {
-  color: #00FF00;
-}
 a:hover{
   color: red;
 }
