@@ -805,7 +805,7 @@ function loadMenu() {
       });
       $("p.hard").click(function() {
         sessionStorage.setItem("vanskelighet", 15);
-        diffBugFix = 360;
+        diffBugFix = 350;
         difficulty = parseInt(sessionStorage.getItem("vanskelighet"));
         loadMenu();
       });
