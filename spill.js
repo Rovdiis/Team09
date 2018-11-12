@@ -466,12 +466,12 @@ let soundValue = 0;
 //Definerer variablene for startScreen
 let titel = "<div class='startScreen'><h1>Virus Warfare</h1></div>";
 let lore =
-  "<div class='startScreen'><p id='lore'>I en ikke så fjern fremtid har kunstig intelligens gått for langt.<br><br> AI’en Ormulf, en fryktelig dataorm har manifestert seg selv i fysisk form.<br><br> I en voldsom eksponentiell vekst sprer ormene seg fra maskin til maskin.<br><br> På under 1 uke er halvparten av verdens servere og datamaskiner infisert. <br><br><br><p></p></div>";
+  "<div class='startScreen'><p id='lore'>In a not to distant future, AI has gone to far, and is threatening the world.<br><br> The AI Ormulf, has taken to solid form, and is now threatening to take control over all machines in the world.<br><br> In a vast exponential growth Ormulf spreads from machine to machine.<br><br> In less than one week, half of the machines and servers has been infested by Ormulf. <br><br> Your job is to keep Ormulf from infesting any more computers.<br><br><p></p></div>";
 let howToTitle = "<div class='startScreen'><h1>How to play</h1></div>";
 let howTo =
-  "<div class='startScreen'><p>På skjermen kommer det ormer nedover skjermen med ord over dem.<br><br>For å bekjempe ormene må du skrive inn ordene før de når spilleren på bunnen av skjermen.<br><br>Det er viktig og trykke space mellom hvert ord, om det er flere ord over marken.<br><br>Når hele ordet er borte, trykker du hvilken som helst tast for å drepe ormen.<br><br></p></div>";
+  "<div class='startScreen'><p>Worms are falling down the screen with words linked over them.<br><br>To fight the worms, you have to type in the words that are displayed, before the worm reaches the player on the bottom of the screen.<br><br>It is really important to press spacebar between the words over the worm, if there are several words.<br><br>When the whole word is typed, press any button to kill the worm.<br><br></p></div>";
 let playButton =
-  "<div class='startScreen'><p class='button'><br><br><button>Start Game!</button></p></div>";
+  "<div class='startScreen'><p class='button'><button>Start Game!</button></p></div>";
 
 //Variabel for å lagre type spill
 let gamewords = 0;
@@ -495,22 +495,7 @@ let hard = "<p class='hard''>HACKER</p>";
 // Back element
 let back = "<p class='back'>BACK</p>";
 
-//
-// function checkGameMode(){
-//
-//   if(gamewords === 0){
-//     list = code;
-//   }else if(gamewords === 1){
-//     list = pc;
-//   }else if(gamewords === 2){
-//     list = sql;
-//   }
-//   else{
-//     alert("Gamemode not chosen");
-//   }
-//
-//
-// }
+
 
 //Funskjon for musikk på spillsiden
 function playSound() {
@@ -531,7 +516,6 @@ function playSound() {
     soundValue = 1;
   }
 }
-//let speed = 50;
 canvas.width = canvasWidth;
 canvas.height = canvasHeight;
 //Fjerner funksjonen som gjør at siden scroller når spacebar blir trykket.
@@ -539,6 +523,7 @@ window.onkeydown = function(e) {
   return !(e.keyCode == 32);
 };
 
+// Tegner spilleren inn i canvaset
 let playerctx = canvas.getContext("2d");
 
 function player() {
@@ -558,6 +543,8 @@ function player() {
 }
 setInterval(player, 1);
 
+
+//Funksjonen som animerer ormen som faller nedover skjermen.
 function frame() {
   if (pos == 390) {
     pos = diffBugFix;
@@ -569,10 +556,8 @@ function frame() {
     stadie3.style.filter = "alpha(opacity=0)";
     life++;
     console.log(life);
-    //clearInterval(id);
     goAgainWrong();
-  } else if (life === 3) {
-    //alert("Game over. Your final score is: " + points);
+  } else if (life === 3) { //Game over funksjonen som stopper spillet.
     gameOverScreen.style.opacity = "1";
     gameOverScreen.style.filter = "alpha(opacity=100)";
     gameOverScreen.style.zIndex = "60";
@@ -589,11 +574,11 @@ function frame() {
   }
 }
 
+//Funksjonen som mottar input fra tastaturet og sender dem videre til spillets kode.
 function play(event) {
   keyPressed = event.keyCode;
   keyPressedChar = String.fromCharCode(keyPressed);
   document.getElementById("points").innerHTML = "Current score: " + points;
-  //document.getElementById("thePoints").innerHTML = "Your final score is: " + points;
 
   splitWord();
   checkValue();
@@ -623,16 +608,17 @@ function checkValue() {
   if (keyPressedChar === currentChar) {
     i++; //Inkrementer teller for å hente neste bokstav
     if (i < letters.length) {
-      // Er vi på siste siste bokstav?
+      // Er vi på siste bokstav?
       currentChar = letters[i]; //nopp, hent neste
       document.getElementById("word").innerHTML = letters.splice(i).join("");
 
+      //Om ordet er i sine føste 33% av lengden, vises ormen som en hel orm.
       if (numberOfLetters * 0.3 >= letters.length) {
         stadie1.style.opacity = "1";
         stadie1.style.filter = "alpha(opacity=100)";
         stadie3.style.opacity = "0";
         stadie3.style.filter = "alpha(opacity=0)";
-      } else if (
+      } else if ( //Om ordet er mellom 33% og 70% blir ormen vist som en skadet orm.
         numberOfLetters * 0.3 <= letters.length &&
         numberOfLetters * 0.7 >= letters.length
       ) {
@@ -642,16 +628,17 @@ function checkValue() {
         stadie2.style.filter = "alpha(opacity=100)";
         explotion.innerHTML =
           "<img src='http://folk.ntnu.no/jarlor/spill/blank.gif";
-      } else {
+      } else { //Etter 70% av ordets lengde vil ormen vises som veldig skadet, som indikerer at den snart er død.
         stadie2.style.opacity = "0";
         stadie2.style.filter = "alpha(opacity=0)";
         stadie3.style.opacity = "1";
         stadie3.style.filter = "alpha(opacity=100)";
       }
     } else {
-      rightWord = true; //jepp, sett til null
+      rightWord = true; //om ordet er riktig
       document.getElementById("word").innerHTML = letters.splice(i).join("");
       //Legger til et poeng basert på posisjonen til marken når den forsvinner
+      //Formelen for poengsummen er 470 - posisjonen til ormen når den dør.
       points += thePoints - pos;
     }
   } else {
@@ -667,10 +654,10 @@ function goAgain() {
   i = 0;
   currentChar = null;
   rightWord = false;
-  //speed--;
   setTimeout(delayNext, 500);
-  //delayNext();
 }
+
+//Denne funksjonen kjører en forsinkelse slik at de grafiske elementene som en eksplosjon rekker å kjøre før det nye ordet blir vist.
 function delayNext() {
   pos = 80;
 
@@ -685,6 +672,8 @@ function delayNext() {
   stadie1.style.opacity = "1";
   stadie1.style.filter = "alpha(opacity=100)";
 }
+
+//Dersom spilleren ikke klarer å skrive inn ordet før det når bunnen av canvasen.
 function goAgainWrong() {
   document.getElementById("word").innerHTML = "";
   explotion.innerHTML =
@@ -692,11 +681,9 @@ function goAgainWrong() {
   i = 0;
   currentChar = null;
   rightWord = false;
-  //speed--;
   setTimeout(delayNextWrong, 500);
-  //delayNext();
 }
-
+//samme som funksjonen delayNext, men dersom ordet ikke er riktig innen det når bunnen av skjermen.
 function delayNextWrong() {
   pos = 80;
 
@@ -710,7 +697,7 @@ function delayNextWrong() {
   newWord();
   frame = null;
 }
-
+//Funksjon som lar spilleren prøve spillet på nytt etter gameover
 function tryAgain() {
   points = 0;
   i = 0;
@@ -721,12 +708,10 @@ function tryAgain() {
   canvas.style.opacity = "1";
   canvas.style.filter = "alpha(opacity=100)";
 }
-
+//Funksjonen som starter spillet etter at gamemode og vanskelighetsgrad er valgt
 function startGame() {
   id = setInterval(frame, difficulty);
   newWord();
-  /*startScreen.style.opacity = "0";
-  startScreen.style.filter = "alpha(opacity=0)";*/
   canvas.style.opacity = "1";
   canvas.style.filter = "alpha(opacity=100)";
   stadie1.style.opacity = "1";
@@ -784,7 +769,6 @@ function loadMenu() {
         $("div.meny").empty(); //Fjerner alt i meny diven.
         $("div.meny").append(titel, lore, howToTitle, howTo, playButton);
         list = pc;
-        //onLoad();
         playGame();
       });
       $("p.back").click(function() {
@@ -799,7 +783,7 @@ function loadMenu() {
       $("div.meny").append(chooseDifficulty, easy, medium, hard, back);
 
       //Funksjon som går av når NOOB er pressed
-      //lagrer vanskelighet til verdi 50
+      //lagrer vanskelighet til verdi 45
       $("p.easy").click(function() {
         console.log("Easy pressed");
         sessionStorage.setItem("vanskelighet", 45);
@@ -809,7 +793,7 @@ function loadMenu() {
       });
 
       //Funksjon som går av når Kinda Good I Guess er pressed
-      //lagrer vanskelighet til verdi 40
+      //lagrer vanskelighet til verdi 35
       $("p.medium").click(function() {
         console.log("medium pressed");
         sessionStorage.setItem("vanskelighet", 35);
@@ -819,7 +803,7 @@ function loadMenu() {
       });
 
       //Funksjon som går av når Hacker er pressed
-      //lagrer vanskelighet til verdi 30
+      //lagrer vanskelighet til verdi 35
       $("p.hard").click(function() {
         console.log("hard pressed");
         sessionStorage.setItem("vanskelighet", 25);
@@ -843,14 +827,14 @@ function createMenu() {
 function createMenuLogo() {
   $("div.meny").append(menylogo);
 }
-
+//Funksjonen som kaller på spillets start i menyen, etter at vanskelighets og gamemode er valgt.
 function playGame() {
   $("p.button").click(function() {
     console.log("button pressed");
     $("div.meny").remove();
     startGame();
   });
-}
+} //Setter vanskelighetsgraden i sessionStorage.
 function receiveDifficulty() {
   difficulty = parseInt(sessionStorage.getItem("vanskelighet"));
   console.log("Vanskelighetsgraden er: ", difficulty);
