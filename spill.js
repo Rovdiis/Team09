@@ -462,6 +462,7 @@ let soundToggle = document.getElementById("soundToggle");
 let sound = document.getElementById("sound");
 let nosound = document.getElementById("nosound");
 let soundValue = 0;
+gamesound.loop = true;
 
 //Definerer variablene for startScreen
 let titel = "<div class='startScreen'><h1>Virus Warfare</h1></div>";
@@ -499,6 +500,7 @@ let back = "<p class='back'>BACK</p>";
 
 //Funskjon for musikk på spillsiden
 function playSound() {
+
   console.log("Button Clicked");
   if (soundValue === 1) {
     gamesound.pause();
