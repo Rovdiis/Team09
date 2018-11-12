@@ -408,7 +408,7 @@ let sql = [
   "DATE",
   "DATETIME",
   "TIMESTAMP",
-  " TIME",
+  "TIME",
   "YEAR",
   "BINARY",
   "VARBINARY",
@@ -425,7 +425,7 @@ let sql = [
   "CURRENCY",
   "AUTONUMBER",
   "HYPERLINK",
-  " LOOKUP WIZARD",
+  "LOOKUP WIZARD",
   "FULL JOIN",
   "UPDATE",
   "AUTO INCREMENT"
