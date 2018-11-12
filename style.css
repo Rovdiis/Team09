@@ -144,7 +144,7 @@ a{
 }
 
 #gameOverScreen{
-  background-image: url("/Users/jarloysteinrovde/Desktop/bilder_spill/hacked.gif");
+  background-image: url("http://folk.ntnu.no/jarlor/spill/hacked.gif");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
