@@ -520,7 +520,6 @@ function play(event) {
 //Funskjon for musikk på spillsiden
 function playSound() {
 
-  console.log("Button Clicked");
   if (soundValue === 1) {
     gamesound.pause();
     sound.style.opacity = "0";
@@ -624,7 +623,6 @@ function frame() {
     stadie3.style.opacity = "0";
     stadie3.style.filter = "alpha(opacity=0)";
     life++;
-    console.log(life);
     goAgainWrong();
   } else if (life === 3) { //Game over funksjonen som stopper spillet.
     gameOverScreen.style.opacity = "1";
@@ -710,7 +708,6 @@ function delayNextWrong() {
   stadie3.style.filter = "alpha(opacity=0)";
   stadie1.style.opacity = "1";
   stadie1.style.filter = "alpha(opacity=100)";
-  console.log("Funksjonen kjører");
   newWord();
   frame = null;
 }
@@ -795,21 +792,18 @@ function loadMenu() {
 
       ////Funksjoner som setter farten til ormen og lagrer den gjennom variabelen difficulty.
       $("p.easy").click(function() {
-        console.log("Easy pressed");
         sessionStorage.setItem("vanskelighet", 45);
         diffBugFix = 380;
         difficulty = parseInt(sessionStorage.getItem("vanskelighet"));
         loadMenu();
       });
       $("p.medium").click(function() {
-        console.log("medium pressed");
         sessionStorage.setItem("vanskelighet", 35);
         diffBugFix = 370;
         difficulty = parseInt(sessionStorage.getItem("vanskelighet"));
         loadMenu();
       });
       $("p.hard").click(function() {
-        console.log("hard pressed");
         sessionStorage.setItem("vanskelighet", 15);
         diffBugFix = 360;
         difficulty = parseInt(sessionStorage.getItem("vanskelighet"));
@@ -835,7 +829,6 @@ function createMenuLogo() {
 //Funksjonen som kaller på spillets start i menyen, etter at vanskelighets og gamemode er valgt.
 function playGame() {
   $("p.button").click(function() {
-    console.log("button pressed");
     $("div.meny").remove();
     showCanvas();
     startGame();
