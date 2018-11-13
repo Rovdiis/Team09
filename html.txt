@@ -1,34 +1,89 @@
-Hello
-Hello
-  <div>DEilig<div>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <!-- Her definerer vi rammeverk og stiler brukt til spill, samt referer til CSS fil !-->
+    <meta charset="utf-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
-  å
-  å
-  å
-  å
-  å
-  ø
-  æ
-  æ
-  æ
-  æ
-  æ
-  ææ
-  æ
-  æ
+    <!-- Link til CSS dokument-->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Link til logo i tittel hode -->
+    <link rel="shortcut icon" href="graphic/logoheader.ico" />
 
-  dd
-  d
-  d
-  d
-  d
-  d
-  d
-  d
-  d
-  d
-  d
-  d
-  d
+<!-- Tittel på spillet-->
+    <title>Virus Warfare</title>
 
-  ewewerewtytyrgterefewewf
+<!-- Filer som brukes:-->
+<!-- MUSIKK AV:
+Music: "Europa" by PICE, https://8bitpice.bandcamp.com/
+PICE license: https://creativecommons.org/licenses/by-nc/3.0/legalcode -->
+
+  </head>
+
+  <body onkeydown="play(event)">
+    <!-- Bakgrunnsbilde-->
+    <div id="bckg-img">
+      <img id="bilde" src="http://folk.ntnu.no/jarlor/spill/bg03.png">
+    </div>
+    <!-- Navigasjonsmeny for websiden -->
+    <div id="navmeny">
+      <ul class="nav">
+        <li> <a  href="index.html">Home</a> </li>
+        <li> <a  href="about.html">About us</a> </li>
+        <li> <a  href="code.html">Code</a> </li>
+      </ul>
+    </div>
+
+
+    <!--Div elementet for selve spillsiden -->
+    <div id="spillside" width="400" height="550">
+      <div id="points" class="points"></div>
+      <div id="soundToggle" onclick="playSound()">
+          <img src="http://folk.ntnu.no/jarlor/spill/SOUND.png" id="sound">
+          <img src="http://folk.ntnu.no/jarlor/spill/NOSOUND.png" id="nosound">
+      </div>
+
+      <!--Div for spillmeny-->
+      <div class="meny" width="400" height="550"></div>
+
+      <!--Ormene på skjermen-->
+      <div id="theWorm">
+        <div id="explotion"></div>
+        <img src="http://folk.ntnu.no/jarlor/spill/wormstadie1.gif" style="position: absolute; opacity: 0; bottom: 0px;" id="stadie1">
+        <img src="http://folk.ntnu.no/jarlor/spill/wormstadie2_7.gif"style="position: absolute; opacity: 0; bottom: 0px;" id="stadie2">
+        <img src="http://folk.ntnu.no/jarlor/spill/wormstadie3_3.gif"style="position: absolute; opacity: 0; bottom: 0px;" id="stadie3">
+        <div id="word"></div>
+      </div>
+
+      <!-- Canvas for spillet!-->
+      <canvas id="gameCanvas">
+      </canvas>
+
+    </div>
+
+    <!-- Game over screen-->
+    <div id="gameOverScreen">
+      <div id="gameOverText"><h1>Ormulf has hijacked your computer</h1><br>
+      Ormulf has now grown and taken over all machines on planet earth.<br><br>
+          You have failed you job as sole protector of earth, and all hope is lost.<br><br>
+          Maybe there was no way to stop Ormulf?<br><br>
+          <div id="thePoints"> </div> <br><br><button onclick="tryAgain()">Try again?</button>
+      </div>
+
+    </div>
+
+    <!--Footer med Copyright-->
+    <footer id="Hovedfooter">
+       <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+    </footer>
+  </body>
+  <!--Link til JavaScript dokument-->
+  <script src="spill.js"></script>
+</html>
