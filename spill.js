@@ -454,6 +454,10 @@ let life = 0;
 let thePoints = 470;
 let theWorm = document.getElementById("theWorm");
 let id;
+
+/*MUSIKK AV:
+Music: "Europa" by PICE, https://8bitpice.bandcamp.com/
+PICE license: https://creativecommons.org/licenses/by-nc/3.0/legalcode */
 let gamesound = new Audio(
   "http://folk.ntnu.no/jarlor/spill/audio.wav"
 );
