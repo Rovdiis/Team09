@@ -74,7 +74,7 @@ PICE license: https://creativecommons.org/licenses/by-nc/3.0/legalcode -->
       Ormulf has now grown and taken over all machines on planet earth.<br><br>
           You have failed you job as sole protector of earth, and all hope is lost.<br><br>
           Maybe there was no way to stop Ormulf?<br><br>
-          <div id="thePoints"> </div> <br><br><button onclick="tryAgain()">Try again?</button>
+          <div id="gamePoints"></div> <br><br><button onclick="tryAgain()">Try again?</button>
       </div>
 
     </div>

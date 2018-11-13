@@ -452,6 +452,7 @@ let canvasHeight = 550;
 let canvas = document.getElementById("gameCanvas");
 let life = 0;
 let thePoints = 470;
+let gamePoints = document.getElementById("gamePoints");
 let theWorm = document.getElementById("theWorm");
 let id;
 
@@ -628,6 +629,7 @@ function frame() {
     stadie3.style.filter = "alpha(opacity=0)";
     life++;
     goAgainWrong();
+    gamePoints.innerHTML = "Your final score is: " + points;
   } else if (life === 3) { //Game over funksjonen som stopper spillet.
     gameOverScreen.style.opacity = "1";
     gameOverScreen.style.filter = "alpha(opacity=100)";
